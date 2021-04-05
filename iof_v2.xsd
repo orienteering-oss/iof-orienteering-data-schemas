@@ -1,0 +1,2262 @@
+<schema xmlns='http://www.w3.org/2000/10/XMLSchema' targetNamespace='http://www.w3.org/namespace/' xmlns:t='http://www.w3.org/namespace/'>
+
+  <element name='IOFVersion'>
+    <complexType>
+      <attribute name='version' type='string' use='fixed' value='2.0.3' />
+    </complexType>
+  </element>
+
+  <element name='PersonList'>
+    <complexType>
+      <sequence>
+        <element ref='t:IOFVersion' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Person' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Person'>
+    <complexType>
+      <sequence>
+        <element ref='t:PersonName' />
+        <element ref='t:PersonId' />
+        <element ref='t:BirthDate' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Address' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Tele' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Nationality' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+      <attribute name='sex' use='optional'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='M' />
+            <enumeration value='F' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='PersonName'>
+    <complexType>
+      <sequence>
+        <element ref='t:Family' />
+        <element ref='t:Given' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Family'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='Given'>
+    <complexType mixed='true'>
+      <attribute name='sequence' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='PersonId'>
+    <complexType mixed='true'>
+      <attribute name='type' use='optional'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='int' />
+            <enumeration value='nat' />
+            <enumeration value='reg' />
+            <enumeration value='loc' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+      <attribute name='idManager' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='BirthDate'>
+    <complexType>
+      <sequence>
+        <element ref='t:Date' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Nationality'>
+    <complexType>
+      <choice>
+        <element ref='t:CountryId' />
+        <element ref='t:Country' />
+      </choice>
+    </complexType>
+  </element>
+
+  <element name='Contact'>
+    <complexType>
+      <sequence>
+        <choice>
+          <element ref='t:PersonId' />
+          <element ref='t:Person' />
+        </choice>
+        <element ref='t:ContactType' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='ContactType'>
+    <complexType>
+      <attribute name='value' use='default' value='official'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='official' />
+            <enumeration value='entry' />
+            <enumeration value='result' />
+            <enumeration value='info' />
+            <enumeration value='financial' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='CompetitorList'>
+    <complexType>
+      <sequence>
+        <element ref='t:IOFVersion' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Competitor' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Competitor'>
+    <complexType>
+      <sequence>
+        <choice>
+          <element ref='t:PersonId' />
+          <element ref='t:Person' />
+        </choice>
+        <choice>
+          <element ref='t:ClubId' />
+          <element ref='t:Club' />
+          <element ref='t:Country' />
+          <element ref='t:CountryId' />
+        </choice>
+        <element ref='t:PreSelectedClass' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:CCard' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Rank' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Rank'>
+    <complexType>
+      <sequence>
+        <choice>
+          <element ref='t:Name' />
+          <element ref='t:OrganisationId' />
+          <element ref='t:Organisation' />
+        </choice>
+        <element ref='t:RankPosition' />
+        <element ref='t:RankValue' />
+        <element ref='t:ValidFromDate' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ValidToDate' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='RankPosition'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='RankValue'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='ValidFromDate'>
+    <complexType>
+      <sequence>
+        <element ref='t:Date' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='ValidToDate'>
+    <complexType>
+      <sequence>
+        <element ref='t:Date' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='CCard'>
+    <complexType>
+      <sequence>
+        <element ref='t:CCardId' />
+        <element ref='t:PunchingUnitType' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+      <attribute name='miscData' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='CCardId'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='RankList'>
+    <complexType>
+      <sequence>
+        <element ref='t:IOFVersion' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Name' />
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:OrganisationId' />
+          <element ref='t:Organisation' />
+        </choice>
+        <element ref='t:Competitor' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='ClubList'>
+    <complexType>
+      <sequence>
+        <element ref='t:IOFVersion' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Club' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Club'>
+    <complexType>
+      <sequence>
+        <element ref='t:ClubId' />
+        <element ref='t:Name' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ShortName' />
+        <element ref='t:OrganisationId' minOccurs='0' maxOccurs='1' />
+        <choice>
+          <element ref='t:CountryId' />
+          <element ref='t:Country' />
+        </choice>
+        <element ref='t:Address' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Tele' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:WebURL' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Account' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Contact' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='ClubId'>
+    <complexType mixed='true'>
+      <attribute name='type' use='optional'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='int' />
+            <enumeration value='nat' />
+            <enumeration value='reg' />
+            <enumeration value='loc' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+      <attribute name='idManager' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='EventList'>
+    <complexType>
+      <sequence>
+        <element ref='t:IOFVersion' minOccurs='0' maxOccurs='1' />
+        <element ref='t:EventClassification' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Event' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Event'>
+    <complexType>
+      <sequence>
+        <element ref='t:EventId' />
+        <element ref='t:Name' />
+        <choice>
+          <element ref='t:EventClassificationId' />
+          <element ref='t:EventClassification' />
+        </choice>
+        <element ref='t:StartDate' />
+        <element ref='t:FinishDate' minOccurs='0' maxOccurs='1' />
+        <element ref='t:EventOfficial' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Organiser' minOccurs='0' maxOccurs='1' />
+        <element ref='t:EventClass' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:EventRace' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:WebURL' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:EntryData' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Service' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Account' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+      <attribute name='eventForm' use='default' value='IndSingleDay'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='IndSingleDay' />
+            <enumeration value='IndMultiDay' />
+            <enumeration value='teamSingleDay' />
+            <enumeration value='teamMultiDay' />
+            <enumeration value='relay' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='EventId'>
+    <complexType mixed='true'>
+      <attribute name='type' use='optional'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='int' />
+            <enumeration value='nat' />
+            <enumeration value='reg' />
+            <enumeration value='loc' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+      <attribute name='idManager' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='StartDate'>
+    <complexType>
+      <sequence>
+        <element ref='t:Date' />
+        <element ref='t:Clock' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='FinishDate'>
+    <complexType>
+      <sequence>
+        <element ref='t:Date' />
+        <element ref='t:Clock' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Organiser'>
+    <complexType>
+      <choice minOccurs='0' maxOccurs='unbounded'>
+        <element ref='t:ClubId' />
+        <element ref='t:Club' />
+      </choice>
+    </complexType>
+  </element>
+
+  <element name='EventOfficial'>
+    <complexType>
+      <sequence>
+        <element ref='t:EventOfficialRole' />
+        <choice>
+          <element ref='t:PersonId' />
+          <element ref='t:Person' />
+        </choice>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='EventOfficialRole'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='EntryData'>
+    <complexType>
+      <sequence minOccurs='0' maxOccurs='unbounded'>
+        <element ref='t:Address' />
+        <element ref='t:Tele' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='EventClass'>
+    <complexType>
+      <sequence>
+        <choice>
+          <element ref='t:ClassId' />
+          <element ref='t:Class' />
+        </choice>
+        <choice minOccurs='0' maxOccurs='1'>
+          <choice>
+            <sequence>
+              <element ref='t:ClassRaceInfo' />
+              <element ref='t:PunchingUnitType' />
+            </sequence>
+            <sequence maxOccurs='unbounded'>
+              <element ref='t:EventRaceId' />
+              <element ref='t:ClassRaceInfo' />
+              <element ref='t:PunchingUnitType' />
+            </sequence>
+          </choice>
+          <element ref='t:TransferedToClass' />
+          <element ref='t:DividedIntoClass' />
+        </choice>
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='TransferedToClass'>
+    <complexType>
+      <choice>
+        <element ref='t:ClassId' />
+        <element ref='t:ClassShortName' />
+      </choice>
+    </complexType>
+  </element>
+
+  <element name='DividedIntoClass'>
+    <complexType>
+      <sequence>
+        <element ref='t:EventClass' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='EntryClass'>
+    <complexType>
+      <choice>
+        <element ref='t:ClassId' />
+        <element ref='t:ClassShortName' />
+        <element ref='t:EventClass' />
+      </choice>
+      <attribute name='sequence' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='EventClassification'>
+    <complexType>
+      <sequence>
+        <element ref='t:EventClassificationId' />
+        <element ref='t:Name' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='EventClassificationId'>
+    <complexType mixed='true'>
+      <attribute name='type' use='optional'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='int' />
+            <enumeration value='nat' />
+            <enumeration value='reg' />
+            <enumeration value='loc' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+      <attribute name='idManager' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='EventRace'>
+    <complexType>
+      <sequence>
+        <element ref='t:EventRaceId' />
+        <element ref='t:Name' />
+        <element ref='t:RaceDate' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='EventRaceId'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='RaceDate'>
+    <complexType>
+      <sequence>
+        <element ref='t:Date' />
+        <element ref='t:Clock' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='EntryFee'>
+    <complexType>
+      <sequence>
+        <element ref='t:EntryFeeId' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Name' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Amount' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+      <attribute name='taxIncluded' use='default' value='Y'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='Y' />
+            <enumeration value='N' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='EntryFeeId'>
+    <complexType mixed='true'>
+      <attribute name='type' use='optional'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='int' />
+            <enumeration value='nat' />
+            <enumeration value='reg' />
+            <enumeration value='loc' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+      <attribute name='idManager' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='Amount'>
+    <complexType mixed='true'>
+      <attribute name='currency' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='EntryList'>
+    <complexType>
+      <sequence>
+        <element ref='t:IOFVersion' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ClubEntry' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='ClubEntry'>
+    <complexType>
+      <sequence>
+        <choice>
+          <element ref='t:ClubId' />
+          <element ref='t:Club' />
+        </choice>
+        <element ref='t:Contact' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Entry' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Entry'>
+    <complexType>
+      <sequence>
+        <element ref='t:EntryId' minOccurs='0' maxOccurs='1' />
+        <choice>
+          <sequence>
+            <choice>
+              <element ref='t:PersonId' />
+              <element ref='t:Person' />
+            </choice>
+            <element ref='t:CCard' minOccurs='0' maxOccurs='unbounded' />
+            <element ref='t:Rank' minOccurs='0' maxOccurs='unbounded' />
+          </sequence>
+          <sequence>
+            <element ref='t:TeamName' />
+            <sequence minOccurs='0' maxOccurs='unbounded'>
+              <choice>
+                <element ref='t:PersonId' />
+                <element ref='t:Person' />
+              </choice>
+              <choice minOccurs='0' maxOccurs='1'>
+                <element ref='t:ClubId' />
+                <element ref='t:Club' />
+              </choice>
+              <element ref='t:CCard' minOccurs='0' maxOccurs='unbounded' />
+              <element ref='t:Rank' minOccurs='0' maxOccurs='unbounded' />
+              <element ref='t:TeamSequence' minOccurs='0' maxOccurs='1' />
+            </sequence>
+          </sequence>
+        </choice>
+        <element ref='t:EntryClass' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:AllocationControl' minOccurs='0' maxOccurs='1' />
+        <element ref='t:EntryDate' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+      <attribute name='nonCompetitor' use='default' value='N'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='Y' />
+            <enumeration value='N' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='EntryId'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='TeamName'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='TeamSequence'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='EntryDate'>
+    <complexType>
+      <sequence>
+        <element ref='t:Date' />
+        <element ref='t:Clock' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='AllocationControl'>
+    <complexType>
+      <sequence>
+        <choice minOccurs='0' maxOccurs='1'>
+          <choice>
+            <element ref='t:ClubId' />
+            <element ref='t:Club' />
+          </choice>
+          <choice>
+            <element ref='t:PersonId' />
+            <element ref='t:Person' />
+          </choice>
+        </choice>
+        <element ref='t:AllocationControlType' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='AllocationControlType'>
+    <complexType>
+      <attribute name='value' use='default' value='normal'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='normal' />
+            <enumeration value='groupedWithRef' />
+            <enumeration value='distributedFromRef' />
+            <enumeration value='earlyStart' />
+            <enumeration value='lateStart' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='StartList'>
+    <complexType>
+      <sequence>
+        <element ref='t:IOFVersion' minOccurs='0' maxOccurs='1' />
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:EventId' />
+          <element ref='t:Event' />
+        </choice>
+        <element ref='t:ClassStart' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='ClassStart'>
+    <complexType>
+      <sequence>
+        <choice>
+          <element ref='t:ClassId' />
+          <element ref='t:ClassShortName' />
+          <element ref='t:EventClass' />
+        </choice>
+        <choice minOccurs='0' maxOccurs='unbounded'>
+          <element ref='t:PersonStart' />
+          <element ref='t:TeamStart' />
+        </choice>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='PersonStart'>
+    <complexType>
+      <sequence>
+        <choice>
+          <element ref='t:PersonId' />
+          <element ref='t:Person' />
+        </choice>
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:ClubId' />
+          <element ref='t:Club' />
+          <element ref='t:CountryId' />
+          <element ref='t:Country' />
+        </choice>
+        <element ref='t:Rank' minOccurs='0' maxOccurs='unbounded' />
+        <choice>
+          <element ref='t:Start' />
+          <element ref='t:RaceStart' />
+        </choice>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='TeamStart'>
+    <complexType>
+      <sequence>
+        <element ref='t:TeamName' />
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:CountryId' />
+          <element ref='t:Country' />
+        </choice>
+        <element ref='t:PersonStart' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Start'>
+    <complexType>
+      <sequence>
+        <element ref='t:StartNumber' minOccurs='0' maxOccurs='1' />
+        <element ref='t:BibNumber' minOccurs='0' maxOccurs='1' />
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:CCardId' />
+          <element ref='t:CCard' />
+        </choice>
+        <element ref='t:StartTime' minOccurs='0' maxOccurs='1' />
+        <element ref='t:TeamSequence' minOccurs='0' maxOccurs='1' />
+        <element ref='t:CourseLength' />
+        <element ref='t:StartId' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='RaceStart'>
+    <complexType>
+      <sequence>
+        <choice>
+          <element ref='t:EventRaceId' />
+          <element ref='t:EventRace' />
+        </choice>
+        <element ref='t:Start' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='StartNumber'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='BibNumber'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='ResultList'>
+    <complexType>
+      <sequence>
+        <element ref='t:IOFVersion' minOccurs='0' maxOccurs='1' />
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:EventId' />
+          <element ref='t:Event' />
+        </choice>
+        <element ref='t:ClassResult' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+      <attribute name='status' use='default' value='complete'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='complete' />
+            <enumeration value='snapshot' />
+            <enumeration value='delta' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='ClassResult'>
+    <complexType>
+      <sequence>
+        <choice>
+          <element ref='t:ClassId' />
+          <element ref='t:ClassShortName' />
+          <element ref='t:EventClass' />
+        </choice>
+        <choice minOccurs='0' maxOccurs='unbounded'>
+          <element ref='t:PersonResult' />
+          <element ref='t:TeamResult' />
+        </choice>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='PersonResult'>
+    <complexType>
+      <sequence>
+        <choice>
+          <element ref='t:PersonId' />
+          <element ref='t:Person' />
+        </choice>
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:ClubId' />
+          <element ref='t:Club' />
+          <element ref='t:CountryId' />
+          <element ref='t:Country' />
+        </choice>
+        <element ref='t:Rank' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Result' />
+        <element ref='t:RaceResult' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='TeamResult'>
+    <complexType>
+      <sequence>
+        <element ref='t:TeamName' />
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:CountryId' />
+          <element ref='t:Country' />
+        </choice>
+        <element ref='t:StartNumber' minOccurs='0' maxOccurs='1' />
+        <element ref='t:BibNumber' minOccurs='0' maxOccurs='1' />
+        <element ref='t:StartTime' minOccurs='0' maxOccurs='1' />
+        <element ref='t:FinishTime' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Time' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ResultPosition' minOccurs='0' maxOccurs='1' />
+        <element ref='t:TeamStatus' />
+        <element ref='t:Rank' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Point' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:PersonResult' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Result'>
+    <complexType>
+      <sequence>
+        <element ref='t:StartNumber' minOccurs='0' maxOccurs='1' />
+        <element ref='t:BibNumber' minOccurs='0' maxOccurs='1' />
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:CCardId' />
+          <element ref='t:CCard' />
+        </choice>
+        <element ref='t:StartTime' minOccurs='0' maxOccurs='1' />
+        <element ref='t:FinishTime' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Time' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ResultPosition' minOccurs='0' maxOccurs='1' />
+        <element ref='t:CompetitorStatus' />
+        <element ref='t:TeamSequence' minOccurs='0' maxOccurs='1' />
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:CourseVariationId' />
+          <element ref='t:CourseVariation' />
+          <element ref='t:CourseLength' />
+        </choice>
+        <element ref='t:SplitTime' minOccurs='0' maxOccurs='unbounded' />
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:BadgeValueId' />
+          <element ref='t:BadgeValue' />
+        </choice>
+        <element ref='t:Point' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='RaceResult'>
+    <complexType>
+      <sequence>
+        <choice>
+          <element ref='t:EventRaceId' />
+          <element ref='t:EventRace' />
+        </choice>
+        <element ref='t:Result' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='CompetitorStatus'>
+    <complexType>
+      <attribute name='value' use='required'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='Inactive' />
+            <enumeration value='DidNotStart' />
+            <enumeration value='Active' />
+            <enumeration value='Finished' />
+            <enumeration value='OK' />
+            <enumeration value='MisPunch' />
+            <enumeration value='DidNotFinish' />
+            <enumeration value='Disqualified' />
+            <enumeration value='NotCompeting' />
+            <enumeration value='SportWithdr' />
+            <enumeration value='OverTime' />
+            <enumeration value='Moved' />
+            <enumeration value='MovedUp' />
+            <enumeration value='Cancelled' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='TeamStatus'>
+    <complexType>
+      <attribute name='value' use='required'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='Inactive' />
+            <enumeration value='DidNotStart' />
+            <enumeration value='Active' />
+            <enumeration value='Finished' />
+            <enumeration value='OK' />
+            <enumeration value='MisPunch' />
+            <enumeration value='DidNotFinish' />
+            <enumeration value='Disqualified' />
+            <enumeration value='NotCompeting' />
+            <enumeration value='SportWithdr' />
+            <enumeration value='OverTime' />
+            <enumeration value='Moved' />
+            <enumeration value='MovedUp' />
+            <enumeration value='Cancelled' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='Point'>
+    <complexType>
+      <attribute name='type' type='string' use='required' />
+      <attribute name='value' type='string' use='required' />
+    </complexType>
+  </element>
+
+  <element name='ResultPosition'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='SplitTime'>
+    <complexType>
+      <sequence>
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:ControlCode' />
+          <element ref='t:Control' />
+        </choice>
+        <element ref='t:Time' minOccurs='0' maxOccurs='1' />
+      </sequence>
+      <attribute name='sequence' type='string' use='required' />
+    </complexType>
+  </element>
+
+  <element name='BadgeList'>
+    <complexType>
+      <sequence>
+        <element ref='t:IOFVersion' minOccurs='0' maxOccurs='1' />
+        <element ref='t:BadgeValue' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:BadgeLimit' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='BadgeValue'>
+    <complexType>
+      <sequence>
+        <element ref='t:BadgeValueId' />
+        <element ref='t:Name' />
+        <element ref='t:ShortName' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='BadgeValueId'>
+    <complexType mixed='true'>
+      <attribute name='type' use='optional'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='int' />
+            <enumeration value='nat' />
+            <enumeration value='reg' />
+            <enumeration value='loc' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+      <attribute name='idManager' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='BadgeLimit'>
+    <complexType>
+      <sequence>
+        <choice>
+          <element ref='t:BadgeValueId' />
+          <element ref='t:BadgeValue' />
+        </choice>
+        <choice>
+          <element ref='t:EventClassificationId' />
+          <element ref='t:EventClassification' />
+        </choice>
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:ClassTypeId' />
+          <element ref='t:ClassType' />
+        </choice>
+        <element ref='t:TimeFactor' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='TimeFactor'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='ResultSelection'>
+    <complexType>
+      <sequence>
+        <choice minOccurs='0' maxOccurs='unbounded'>
+          <element ref='t:OrganisationId' />
+          <element ref='t:Organisation' />
+        </choice>
+        <choice minOccurs='0' maxOccurs='unbounded'>
+          <element ref='t:ClubId' />
+          <element ref='t:Club' />
+        </choice>
+        <choice minOccurs='0' maxOccurs='unbounded'>
+          <element ref='t:ClassId' />
+          <element ref='t:ClassShortName' />
+          <element ref='t:Class' />
+        </choice>
+        <element ref='t:Position' />
+        <element ref='t:ModifyDate' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Position'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='ClassData'>
+    <complexType>
+      <sequence>
+        <element ref='t:IOFVersion' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ClassType' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Class' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='ClassType'>
+    <complexType>
+      <sequence>
+        <element ref='t:ClassTypeId' />
+        <element ref='t:Name' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='ClassTypeId'>
+    <complexType mixed='true'>
+      <attribute name='type' use='optional'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='int' />
+            <enumeration value='nat' />
+            <enumeration value='reg' />
+            <enumeration value='loc' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+      <attribute name='idManager' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='Class'>
+    <complexType>
+      <sequence>
+        <element ref='t:ClassId' />
+        <element ref='t:Name' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ClassShortName' />
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:ClassTypeId' />
+          <element ref='t:ClassType' />
+        </choice>
+        <element ref='t:SubstituteClass' minOccurs='0' maxOccurs='1' />
+        <element ref='t:NotQualifiedSubstituteClass' minOccurs='0' maxOccurs='1' />
+        <choice minOccurs='0' maxOccurs='unbounded'>
+          <element ref='t:EntryFeeId' />
+          <element ref='t:EntryFee' />
+        </choice>
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+      <attribute name='lowAge' type='string' use='optional' />
+      <attribute name='highAge' type='string' use='optional' />
+      <attribute name='sex' use='required'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='M' />
+            <enumeration value='F' />
+            <enumeration value='B' />
+          </restriction>
+        </simpleType>
+      </attribute>
+      <attribute name='numberInTeam' type='string' use='default' value='1' />
+      <attribute name='teamEntry' use='default' value='N'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='Y' />
+            <enumeration value='N' />
+          </restriction>
+        </simpleType>
+      </attribute>
+      <attribute name='maxNumberInClass' type='string' use='optional' />
+      <attribute name='actualForRanking' use='default' value='N'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='Y' />
+            <enumeration value='N' />
+          </restriction>
+        </simpleType>
+      </attribute>
+      <attribute name='timePresentation' use='default' value='Y'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='Y' />
+            <enumeration value='N' />
+          </restriction>
+        </simpleType>
+      </attribute>
+      <attribute name='allowedMinAge' type='string' use='optional' />
+      <attribute name='allowedMaxAge' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='ClassId'>
+    <complexType mixed='true'>
+      <attribute name='type' use='optional'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='int' />
+            <enumeration value='nat' />
+            <enumeration value='reg' />
+            <enumeration value='loc' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+      <attribute name='idManager' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='ClassShortName'>
+    <complexType mixed='true'>
+      <attribute name='idManager' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='SubstituteClass'>
+    <complexType>
+      <choice>
+        <element ref='t:ClassId' />
+        <element ref='t:ClassShortName' />
+        <element ref='t:Class' />
+      </choice>
+    </complexType>
+  </element>
+
+  <element name='NotQualifiedSubstituteClass'>
+    <complexType>
+      <choice>
+        <element ref='t:ClassId' />
+        <element ref='t:ClassShortName' />
+        <element ref='t:Class' />
+      </choice>
+    </complexType>
+  </element>
+
+  <element name='PreSelectedClass'>
+    <complexType>
+      <choice>
+        <element ref='t:ClassId' />
+        <element ref='t:ClassShortName' />
+        <element ref='t:Class' />
+      </choice>
+      <attribute name='sequence' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='ClassRaceInfo'>
+    <complexType>
+      <sequence>
+        <element ref='t:FirstStart' minOccurs='0' maxOccurs='1' />
+        <element ref='t:StartInterval' minOccurs='0' maxOccurs='1' />
+        <element ref='t:EstimatedBestTime' minOccurs='0' maxOccurs='1' />
+        <element ref='t:EstimatedLastPrizeTime' minOccurs='0' maxOccurs='1' />
+        <element ref='t:PrizeCeremonyTime' minOccurs='0' maxOccurs='1' />
+        <element ref='t:AllocationMethod' minOccurs='0' maxOccurs='1' />
+        <element ref='t:StartMethod' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ClassRaceStatus' />
+        <element ref='t:CourseVariationId' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+      <attribute name='numberOfVacants' type='string' use='optional' />
+      <attribute name='rankingRace' use='default' value='N'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='Y' />
+            <enumeration value='N' />
+          </restriction>
+        </simpleType>
+      </attribute>
+      <attribute name='numberOfPrizes' type='string' use='optional' />
+      <attribute name='bibNumberPrefix' type='string' use='optional' />
+      <attribute name='bibNumberBase' type='string' use='optional' />
+      <attribute name='finishChute' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='AllocationMethod'>
+    <complexType>
+      <attribute name='value' use='default' value='normal'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='normal' />
+            <enumeration value='seeded' />
+            <enumeration value='group' />
+            <enumeration value='invertedResult' />
+            <enumeration value='preseedingResult' />
+            <enumeration value='manual' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='StartMethod'>
+    <complexType>
+      <attribute name='value' use='required'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='allocatTime' />
+            <enumeration value='punching' />
+            <enumeration value='limitedPunching' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='ClassRaceStatus'>
+    <complexType>
+      <attribute name='value' use='required'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='notAllocated' />
+            <enumeration value='allocated' />
+            <enumeration value='started' />
+            <enumeration value='finished' />
+            <enumeration value='deleted' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='FirstStart'>
+    <complexType>
+      <sequence>
+        <element ref='t:Date' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Clock' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='StartInterval'>
+    <complexType>
+      <sequence>
+        <element ref='t:Time' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='EstimatedBestTime'>
+    <complexType>
+      <sequence>
+        <element ref='t:Time' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='EstimatedLastPrizeTime'>
+    <complexType>
+      <sequence>
+        <element ref='t:Time' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='PrizeCeremonyTime'>
+    <complexType>
+      <sequence>
+        <element ref='t:Date' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Clock' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='CourseData'>
+    <complexType>
+      <sequence>
+        <element ref='t:IOFVersion' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Map' minOccurs='0' maxOccurs='1' />
+        <element ref='t:StartPoint' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Control' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:FinishPoint' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Course' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Control'>
+    <complexType>
+      <sequence>
+        <element ref='t:ControlCode' />
+        <element ref='t:Description' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ControlPosition' minOccurs='0' maxOccurs='1' />
+        <choice minOccurs='0' maxOccurs='unbounded'>
+          <element ref='t:PunchingUnit' />
+          <element ref='t:PunchPattern' />
+        </choice>
+        <element ref='t:PunchingUnitType' minOccurs='0' maxOccurs='1' />
+        <element ref='t:MapPosition' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Comment' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Description'>
+    <complexType>
+      <sequence>
+        <element ref='t:Box' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Box'>
+    <complexType>
+      <choice minOccurs='0' maxOccurs='1'>
+        <element ref='t:Symbol' />
+        <element ref='t:Text' />
+      </choice>
+      <attribute name='column' use='required'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='A' />
+            <enumeration value='B' />
+            <enumeration value='C' />
+            <enumeration value='D' />
+            <enumeration value='E' />
+            <enumeration value='F' />
+            <enumeration value='G' />
+            <enumeration value='H' />
+          </restriction>
+        </simpleType>
+      </attribute>
+      <attribute name='hasDiagonal' use='default' value='N'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='Y' />
+            <enumeration value='N' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='Symbol'>
+    <complexType>
+      <sequence>
+        <element ref='t:SymbolId' />
+        <element ref='t:Name' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='SymbolId'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='Text'>
+    <complexType mixed='true'>
+      <attribute name='languageId' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='ControlCode'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='ControlPosition'>
+    <complexType>
+      <attribute name='x' type='string' use='required' />
+      <attribute name='y' type='string' use='required' />
+      <attribute name='unit' use='default' value='m'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='m' />
+            <enumeration value='ft' />
+            <enumeration value='km' />
+            <enumeration value='WGS-84' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='Map'>
+    <complexType>
+      <sequence>
+        <element ref='t:Scale' />
+        <element ref='t:MapPosition' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Scale'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='MapPosition'>
+    <complexType>
+      <attribute name='x' type='string' use='required' />
+      <attribute name='y' type='string' use='required' />
+      <attribute name='unit' use='default' value='mm'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='mm' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='StartPoint'>
+    <complexType>
+      <sequence>
+        <element ref='t:StartPointCode' />
+        <element ref='t:Description' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ControlPosition' minOccurs='0' maxOccurs='1' />
+        <element ref='t:MapPosition' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Comment' minOccurs='0' maxOccurs='1' />
+        <element ref='t:DistanceFromStart' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='StartPointCode'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='DistanceFromStart'>
+    <complexType mixed='true'>
+      <attribute name='unit' use='default' value='m'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='m' />
+            <enumeration value='km' />
+            <enumeration value='ft' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='Info'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='FinishPoint'>
+    <complexType>
+      <sequence>
+        <element ref='t:FinishPointCode' />
+        <element ref='t:Description' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ControlPosition' minOccurs='0' maxOccurs='1' />
+        <choice minOccurs='0' maxOccurs='unbounded'>
+          <element ref='t:PunchingUnit' />
+          <element ref='t:PunchPattern' />
+        </choice>
+        <element ref='t:PunchingUnitType' minOccurs='0' maxOccurs='1' />
+        <element ref='t:MapPosition' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Comment' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='FinishPointCode'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='Course'>
+    <complexType>
+      <sequence>
+        <element ref='t:CourseName' />
+        <element ref='t:CourseId' minOccurs='0' maxOccurs='1' />
+        <element ref='t:EventId' minOccurs='0' maxOccurs='1' />
+        <element ref='t:EventRaceId' minOccurs='0' maxOccurs='1' />
+        <choice minOccurs='0' maxOccurs='unbounded'>
+          <element ref='t:ClassId' />
+          <element ref='t:ClassShortName' />
+        </choice>
+        <element ref='t:CourseVariation' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:CourseSectionList' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='CourseName'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='CourseId'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='CourseVariation'>
+    <complexType>
+      <sequence>
+        <element ref='t:CourseVariationId' />
+        <element ref='t:Name' minOccurs='0' maxOccurs='1' />
+        <element ref='t:CourseLength' />
+        <element ref='t:CourseClimb' minOccurs='0' maxOccurs='1' />
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:StartPointCode' />
+          <element ref='t:StartPoint' />
+        </choice>
+        <element ref='t:FinishChute' minOccurs='0' maxOccurs='1' />
+        <element ref='t:CourseControl' maxOccurs='unbounded' />
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:FinishPointCode' />
+          <element ref='t:FinishPoint' />
+        </choice>
+        <element ref='t:DistanceToFinish' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+      <attribute name='numberOfRunners' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='CourseVariationId'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='CourseLength'>
+    <complexType mixed='true'>
+      <attribute name='unit' use='default' value='m'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='m' />
+            <enumeration value='km' />
+            <enumeration value='ft' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='CourseClimb'>
+    <complexType mixed='true'>
+      <attribute name='unit' use='default' value='m'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='m' />
+            <enumeration value='km' />
+            <enumeration value='ft' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='StartId'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='FinishChute'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='FinishId'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='DistanceToFinish'>
+    <complexType mixed='true'>
+      <attribute name='FromControl' type='string' use='optional' />
+      <attribute name='unit' use='default' value='m'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='m' />
+            <enumeration value='km' />
+            <enumeration value='ft' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='CourseSectionList'>
+    <complexType>
+      <sequence>
+        <element ref='t:StartPointCode' minOccurs='0' maxOccurs='1' />
+        <element ref='t:CourseSection' maxOccurs='unbounded' />
+        <element ref='t:FinishPointCode' minOccurs='0' maxOccurs='1' />
+        <element ref='t:DistanceToFinish' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='CourseSection'>
+    <complexType>
+      <sequence>
+        <element ref='t:CourseSectionId' />
+        <element ref='t:CourseBranch' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='CourseSectionId'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='CourseBranch'>
+    <complexType>
+      <sequence>
+        <element ref='t:CourseBranchId' />
+        <element ref='t:CourseControl' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='CourseBranchId'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='CourseControl'>
+    <complexType>
+      <sequence>
+        <element ref='t:Sequence' />
+        <choice>
+          <element ref='t:ControlCode' />
+          <element ref='t:Control' />
+        </choice>
+        <element ref='t:Comment' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:LegLength' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:MapTextPosition' minOccurs='0' maxOccurs='1' />
+      </sequence>
+      <attribute name='markedRoute' use='default' value='N'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='Y' />
+            <enumeration value='N' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='LegLength'>
+    <complexType mixed='true'>
+      <attribute name='FromControl' type='string' use='optional' />
+      <attribute name='unit' use='default' value='m'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='m' />
+            <enumeration value='km' />
+            <enumeration value='ft' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='Sequence'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='MapTextPosition'>
+    <complexType>
+      <sequence>
+        <element ref='t:MapPosition' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='PunchingUnit'>
+    <complexType>
+      <sequence>
+        <element ref='t:UnitCode' />
+        <element ref='t:PunchingUnitType' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='UnitCode'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='PunchingUnitType'>
+    <complexType>
+      <attribute name='value' use='required'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='manual' />
+            <enumeration value='SI' />
+            <enumeration value='Emit' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='PunchPattern'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='Name'>
+    <complexType mixed='true'>
+      <attribute name='languageId' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='ShortName'>
+    <complexType mixed='true'>
+      <attribute name='languageId' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='Comment'>
+    <complexType mixed='true'>
+      <attribute name='languageId' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='Organisation'>
+    <complexType>
+      <sequence>
+        <element ref='t:OrganisationId' />
+        <element ref='t:Name' />
+        <element ref='t:ShortName' minOccurs='0' maxOccurs='1' />
+        <choice>
+          <element ref='t:OrganisationTypeId' />
+          <element ref='t:OrganisationType' />
+        </choice>
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:CountryId' />
+          <element ref='t:Country' />
+        </choice>
+        <element ref='t:Address' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Tele' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Account' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Contact' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:SubOrganisation' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='OrganisationId'>
+    <complexType mixed='true'>
+      <attribute name='type' use='optional'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='int' />
+            <enumeration value='nat' />
+            <enumeration value='reg' />
+            <enumeration value='loc' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+      <attribute name='idManager' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='SubOrganisationType'>
+    <complexType>
+      <choice>
+        <element ref='t:OrganisationTypeId' />
+        <element ref='t:OrganisationType' />
+      </choice>
+    </complexType>
+  </element>
+
+  <element name='SubOrganisation'>
+    <complexType>
+      <choice>
+        <element ref='t:OrganisationId' />
+        <element ref='t:Organisation' />
+      </choice>
+    </complexType>
+  </element>
+
+  <element name='OrganisationList'>
+    <complexType>
+      <sequence>
+        <element ref='t:IOFVersion' minOccurs='0' maxOccurs='1' />
+        <element ref='t:OrganisationType' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Organisation' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='OrganisationType'>
+    <complexType>
+      <sequence>
+        <element ref='t:OrganisationTypeId' />
+        <element ref='t:Name' />
+        <element ref='t:SubOrganisationType' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='OrganisationTypeId'>
+    <complexType mixed='true'>
+      <attribute name='type' use='optional'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='int' />
+            <enumeration value='nat' />
+            <enumeration value='reg' />
+            <enumeration value='loc' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+      <attribute name='idManager' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='Press'>
+    <complexType>
+      <sequence>
+        <element ref='t:Name' />
+        <element ref='t:Contact' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Address' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:Tele' minOccurs='0' maxOccurs='unbounded' />
+        <choice>
+          <element ref='t:Country' />
+          <element ref='t:CountryId' />
+        </choice>
+        <element ref='t:ResultSelection' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+      <attribute name='mediaType' use='required'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='paper' />
+            <enumeration value='tv' />
+            <enumeration value='radio' />
+            <enumeration value='magazine' />
+            <enumeration value='web' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='PressList'>
+    <complexType>
+      <sequence>
+        <element ref='t:IOFVersion' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Press' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Service'>
+    <complexType>
+      <sequence>
+        <element ref='t:ServiceId' />
+        <element ref='t:Name' />
+        <element ref='t:Amount' />
+        <element ref='t:Comment' minOccurs='0' maxOccurs='1' />
+        <element ref='t:MaxNumber' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='ServiceId'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='ServiceRequestList'>
+    <complexType>
+      <sequence>
+        <element ref='t:IOFVersion' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ClubServiceRequest' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:OrganisationServiceRequest' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='ClubServiceRequest'>
+    <complexType>
+      <sequence>
+        <choice>
+          <element ref='t:ClubId' />
+          <element ref='t:Club' />
+        </choice>
+        <element ref='t:ServiceRequest' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:PersonServiceRequest' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='OrganisationServiceRequest'>
+    <complexType>
+      <sequence>
+        <choice>
+          <element ref='t:OrganisationId' />
+          <element ref='t:Organisation' />
+        </choice>
+        <element ref='t:ServiceRequest' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:PersonServiceRequest' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='PersonServiceRequest'>
+    <complexType>
+      <sequence>
+        <choice>
+          <element ref='t:PersonId' />
+          <element ref='t:Person' />
+        </choice>
+        <element ref='t:ServiceRequest' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='ServiceRequest'>
+    <complexType>
+      <sequence>
+        <choice>
+          <element ref='t:ServiceId' />
+          <element ref='t:Service' />
+        </choice>
+        <element ref='t:ServiceOrderNumber' minOccurs='0' maxOccurs='1' />
+        <element ref='t:RequestedQuantity' />
+        <element ref='t:DeliveredQuantity' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Comment' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='MaxNumber'>
+    <complexType mixed='true'>
+      <attribute name='unit' type='string' use='default' value='Pcs' />
+    </complexType>
+  </element>
+
+  <element name='RequestedQuantity'>
+    <complexType mixed='true'>
+      <attribute name='unit' type='string' use='default' value='Pcs' />
+    </complexType>
+  </element>
+
+  <element name='DeliveredQuantity'>
+    <complexType mixed='true'>
+      <attribute name='unit' type='string' use='default' value='Pcs' />
+    </complexType>
+  </element>
+
+  <element name='ServiceOrderNumber'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='Account'>
+    <complexType mixed='true'>
+      <attribute name='type' use='default' value='postalGiro'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='postalGiro' />
+            <enumeration value='bankGiro' />
+            <enumeration value='bankAccount' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='Transaction'>
+    <complexType>
+      <sequence>
+        <element ref='t:Account' />
+        <element ref='t:ForeignAccount' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Date' />
+        <element ref='t:Amount' />
+        <choice>
+          <element ref='t:ClubId' />
+          <element ref='t:Club' />
+          <element ref='t:OrganisationId' />
+          <element ref='t:Organisation' />
+        </choice>
+        <choice minOccurs='0' maxOccurs='unbounded'>
+          <element ref='t:PersonId' />
+          <element ref='t:Person' />
+        </choice>
+        <element ref='t:EntryId' minOccurs='0' maxOccurs='unbounded' />
+        <choice minOccurs='0' maxOccurs='unbounded'>
+          <element ref='t:ServiceOrderNumber' />
+          <element ref='t:ServiceId' />
+          <element ref='t:Service' />
+        </choice>
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='ForeignAccount'>
+    <complexType>
+      <sequence>
+        <element ref='t:Account' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='TransactionList'>
+    <complexType>
+      <sequence>
+        <element ref='t:IOFVersion' minOccurs='0' maxOccurs='1' />
+        <choice>
+          <element ref='t:EventId' />
+          <element ref='t:Event' />
+        </choice>
+        <element ref='t:Transaction' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Address'>
+    <complexType>
+      <sequence>
+        <element ref='t:AddressType' minOccurs='0' maxOccurs='1' />
+        <choice minOccurs='0' maxOccurs='1'>
+          <element ref='t:CountryId' />
+          <element ref='t:Country' />
+        </choice>
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+      <attribute name='careOf' type='string' use='optional' />
+      <attribute name='street' type='string' use='required' />
+      <attribute name='city' type='string' use='required' />
+      <attribute name='zipCode' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='AddressType'>
+    <complexType>
+      <attribute name='value' use='required'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='official' />
+            <enumeration value='home' />
+            <enumeration value='work' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='CountryList'>
+    <complexType>
+      <sequence>
+        <element ref='t:IOFVersion' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Country' minOccurs='0' maxOccurs='unbounded' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Country'>
+    <complexType>
+      <sequence>
+        <element ref='t:CountryId' />
+        <element ref='t:Name' minOccurs='0' maxOccurs='unbounded' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='CountryId'>
+    <complexType>
+      <attribute name='value' use='required'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='ARG' />
+            <enumeration value='AUS' />
+            <enumeration value='AUT' />
+            <enumeration value='BEL' />
+            <enumeration value='BLR' />
+            <enumeration value='BRA' />
+            <enumeration value='BUL' />
+            <enumeration value='CAN' />
+            <enumeration value='CHI' />
+            <enumeration value='CHN' />
+            <enumeration value='COL' />
+            <enumeration value='CRO' />
+            <enumeration value='CUB' />
+            <enumeration value='CZE' />
+            <enumeration value='DEN' />
+            <enumeration value='ECU' />
+            <enumeration value='ESP' />
+            <enumeration value='EST' />
+            <enumeration value='FIN' />
+            <enumeration value='FRA' />
+            <enumeration value='GBR' />
+            <enumeration value='GER' />
+            <enumeration value='GRE' />
+            <enumeration value='HKG' />
+            <enumeration value='HUN' />
+            <enumeration value='INA' />
+            <enumeration value='IND' />
+            <enumeration value='IRL' />
+            <enumeration value='ISR' />
+            <enumeration value='ITA' />
+            <enumeration value='JAM' />
+            <enumeration value='JPN' />
+            <enumeration value='KAZ' />
+            <enumeration value='KOR' />
+            <enumeration value='LAT' />
+            <enumeration value='LTU' />
+            <enumeration value='MAS' />
+            <enumeration value='MDA' />
+            <enumeration value='MKD' />
+            <enumeration value='NED' />
+            <enumeration value='NOR' />
+            <enumeration value='NZL' />
+            <enumeration value='PAK' />
+            <enumeration value='POL' />
+            <enumeration value='POR' />
+            <enumeration value='PRK' />
+            <enumeration value='ROM' />
+            <enumeration value='RSA' />
+            <enumeration value='RUS' />
+            <enumeration value='SLO' />
+            <enumeration value='SUI' />
+            <enumeration value='SVK' />
+            <enumeration value='SWE' />
+            <enumeration value='TPE' />
+            <enumeration value='UKR' />
+            <enumeration value='URU' />
+            <enumeration value='USA' />
+            <enumeration value='VEN' />
+            <enumeration value='YOG' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='Tele'>
+    <complexType>
+      <sequence>
+        <element ref='t:TeleType' minOccurs='0' maxOccurs='1' />
+        <element ref='t:ModifyDate' minOccurs='0' maxOccurs='1' />
+      </sequence>
+      <attribute name='phoneNumber' type='string' use='optional' />
+      <attribute name='faxNumber' type='string' use='optional' />
+      <attribute name='mobilePhoneNumber' type='string' use='optional' />
+      <attribute name='mailAddress' type='string' use='optional' />
+    </complexType>
+  </element>
+
+  <element name='TeleType'>
+    <complexType>
+      <attribute name='value' use='required'>
+        <simpleType>
+          <restriction base='string'>
+            <enumeration value='official' />
+            <enumeration value='home' />
+            <enumeration value='work' />
+            <enumeration value='other' />
+          </restriction>
+        </simpleType>
+      </attribute>
+    </complexType>
+  </element>
+
+  <element name='WebURL'>
+    <complexType mixed='true'></complexType>
+  </element>
+
+  <element name='Date'>
+    <complexType mixed='true'>
+      <attribute name='dateFormat' type='string' use='default' value='YYYY-MM-DD' />
+    </complexType>
+  </element>
+
+  <element name='Clock'>
+    <complexType mixed='true'>
+      <attribute name='clockFormat' type='string' use='default' value='HH:MM:SS' />
+    </complexType>
+  </element>
+
+  <element name='StartTime'>
+    <complexType>
+      <sequence>
+        <element ref='t:Date' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Clock' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='FinishTime'>
+    <complexType>
+      <sequence>
+        <element ref='t:Date' minOccurs='0' maxOccurs='1' />
+        <element ref='t:Clock' />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name='Time'>
+    <complexType mixed='true'>
+      <attribute name='timeFormat' type='string' use='default' value='MM:SS' />
+    </complexType>
+  </element>
+
+  <element name='ModifyDate'>
+    <complexType>
+      <sequence>
+        <element ref='t:Date' />
+        <element ref='t:Clock' minOccurs='0' maxOccurs='1' />
+      </sequence>
+    </complexType>
+  </element>
+</schema>
