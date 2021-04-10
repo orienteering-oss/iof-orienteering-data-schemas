@@ -1,0 +1,1948 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:iof:v2:IofV2",
+  "additionalProperties" : false,
+  "properties" : {
+    "personList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v2:PersonList",
+      "properties" : {
+        "person" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v2:Person",
+            "properties" : {
+              "personName" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v2:PersonName",
+                "properties" : {
+                  "family" : {
+                    "type" : "string"
+                  },
+                  "given" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:Given",
+                      "properties" : {
+                        "content" : {
+                          "type" : "string"
+                        },
+                        "sequence" : {
+                          "type" : "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "personId" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v2:PersonId",
+                "properties" : {
+                  "content" : {
+                    "type" : "string"
+                  },
+                  "type" : {
+                    "type" : "string"
+                  },
+                  "idManager" : {
+                    "type" : "string"
+                  }
+                }
+              },
+              "birthDate" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v2:BirthDate",
+                "properties" : {
+                  "date" : {
+                    "type" : "object",
+                    "id" : "urn:jsonschema:iof:v2:Date",
+                    "properties" : {
+                      "content" : {
+                        "type" : "string"
+                      },
+                      "dateFormat" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "address" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v2:Address",
+                  "properties" : {
+                    "addressType" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:AddressType",
+                      "properties" : {
+                        "value" : {
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "countryId" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:CountryId",
+                      "properties" : {
+                        "value" : {
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "country" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:Country",
+                      "properties" : {
+                        "countryId" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:CountryId"
+                        },
+                        "name" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "id" : "urn:jsonschema:iof:v2:Name",
+                            "properties" : {
+                              "content" : {
+                                "type" : "string"
+                              },
+                              "languageId" : {
+                                "type" : "string"
+                              }
+                            }
+                          }
+                        },
+                        "modifyDate" : {
+                          "type" : "object",
+                          "id" : "urn:jsonschema:iof:v2:ModifyDate",
+                          "properties" : {
+                            "date" : {
+                              "type" : "object",
+                              "$ref" : "urn:jsonschema:iof:v2:Date"
+                            },
+                            "clock" : {
+                              "type" : "object",
+                              "id" : "urn:jsonschema:iof:v2:Clock",
+                              "properties" : {
+                                "content" : {
+                                  "type" : "string"
+                                },
+                                "clockFormat" : {
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "modifyDate" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                    },
+                    "careOf" : {
+                      "type" : "string"
+                    },
+                    "street" : {
+                      "type" : "string"
+                    },
+                    "city" : {
+                      "type" : "string"
+                    },
+                    "zipCode" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              },
+              "tele" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v2:Tele",
+                  "properties" : {
+                    "teleType" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:TeleType",
+                      "properties" : {
+                        "value" : {
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "modifyDate" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                    },
+                    "phoneNumber" : {
+                      "type" : "string"
+                    },
+                    "faxNumber" : {
+                      "type" : "string"
+                    },
+                    "mobilePhoneNumber" : {
+                      "type" : "string"
+                    },
+                    "mailAddress" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              },
+              "nationality" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v2:Nationality",
+                "properties" : {
+                  "countryId" : {
+                    "type" : "object",
+                    "$ref" : "urn:jsonschema:iof:v2:CountryId"
+                  },
+                  "country" : {
+                    "type" : "object",
+                    "$ref" : "urn:jsonschema:iof:v2:Country"
+                  }
+                }
+              },
+              "modifyDate" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+              },
+              "sex" : {
+                "type" : "string"
+              }
+            }
+          }
+        },
+        "iofversion" : {
+          "type" : "object",
+          "id" : "urn:jsonschema:iof:v2:IOFVersion",
+          "properties" : {
+            "version" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "competitorList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v2:CompetitorList",
+      "properties" : {
+        "competitor" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v2:Competitor",
+            "properties" : {
+              "personId" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:PersonId"
+              },
+              "person" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:Person"
+              },
+              "clubId" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v2:ClubId",
+                "properties" : {
+                  "content" : {
+                    "type" : "string"
+                  },
+                  "type" : {
+                    "type" : "string"
+                  },
+                  "idManager" : {
+                    "type" : "string"
+                  }
+                }
+              },
+              "club" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v2:Club",
+                "properties" : {
+                  "clubId" : {
+                    "type" : "object",
+                    "$ref" : "urn:jsonschema:iof:v2:ClubId"
+                  },
+                  "name" : {
+                    "type" : "object",
+                    "$ref" : "urn:jsonschema:iof:v2:Name"
+                  },
+                  "shortName" : {
+                    "type" : "object",
+                    "id" : "urn:jsonschema:iof:v2:ShortName",
+                    "properties" : {
+                      "content" : {
+                        "type" : "string"
+                      },
+                      "languageId" : {
+                        "type" : "string"
+                      }
+                    }
+                  },
+                  "organisationId" : {
+                    "type" : "object",
+                    "id" : "urn:jsonschema:iof:v2:OrganisationId",
+                    "properties" : {
+                      "content" : {
+                        "type" : "string"
+                      },
+                      "type" : {
+                        "type" : "string"
+                      },
+                      "idManager" : {
+                        "type" : "string"
+                      }
+                    }
+                  },
+                  "countryId" : {
+                    "type" : "object",
+                    "$ref" : "urn:jsonschema:iof:v2:CountryId"
+                  },
+                  "country" : {
+                    "type" : "object",
+                    "$ref" : "urn:jsonschema:iof:v2:Country"
+                  },
+                  "address" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:Address"
+                    }
+                  },
+                  "tele" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:Tele"
+                    }
+                  },
+                  "webURL" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string"
+                    }
+                  },
+                  "account" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:Account",
+                      "properties" : {
+                        "content" : {
+                          "type" : "string"
+                        },
+                        "type" : {
+                          "type" : "string"
+                        }
+                      }
+                    }
+                  },
+                  "contact" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:Contact",
+                      "properties" : {
+                        "personId" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:PersonId"
+                        },
+                        "person" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:Person"
+                        },
+                        "contactType" : {
+                          "type" : "object",
+                          "id" : "urn:jsonschema:iof:v2:ContactType",
+                          "properties" : {
+                            "value" : {
+                              "type" : "string"
+                            }
+                          }
+                        },
+                        "modifyDate" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                        }
+                      }
+                    }
+                  },
+                  "modifyDate" : {
+                    "type" : "object",
+                    "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                  }
+                }
+              },
+              "country" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:Country"
+              },
+              "countryId" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:CountryId"
+              },
+              "preSelectedClass" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v2:PreSelectedClass",
+                  "properties" : {
+                    "classId" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:ClassId",
+                      "properties" : {
+                        "content" : {
+                          "type" : "string"
+                        },
+                        "type" : {
+                          "type" : "string"
+                        },
+                        "idManager" : {
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "classShortName" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:ClassShortName",
+                      "properties" : {
+                        "content" : {
+                          "type" : "string"
+                        },
+                        "idManager" : {
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "clazz" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:Class",
+                      "properties" : {
+                        "classId" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:ClassId"
+                        },
+                        "name" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:Name"
+                        },
+                        "classShortName" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:ClassShortName"
+                        },
+                        "classTypeId" : {
+                          "type" : "object",
+                          "id" : "urn:jsonschema:iof:v2:ClassTypeId",
+                          "properties" : {
+                            "content" : {
+                              "type" : "string"
+                            },
+                            "type" : {
+                              "type" : "string"
+                            },
+                            "idManager" : {
+                              "type" : "string"
+                            }
+                          }
+                        },
+                        "classType" : {
+                          "type" : "object",
+                          "id" : "urn:jsonschema:iof:v2:ClassType",
+                          "properties" : {
+                            "classTypeId" : {
+                              "type" : "object",
+                              "$ref" : "urn:jsonschema:iof:v2:ClassTypeId"
+                            },
+                            "name" : {
+                              "type" : "object",
+                              "$ref" : "urn:jsonschema:iof:v2:Name"
+                            },
+                            "modifyDate" : {
+                              "type" : "object",
+                              "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                            }
+                          }
+                        },
+                        "substituteClass" : {
+                          "type" : "object",
+                          "id" : "urn:jsonschema:iof:v2:SubstituteClass",
+                          "properties" : {
+                            "classId" : {
+                              "type" : "object",
+                              "$ref" : "urn:jsonschema:iof:v2:ClassId"
+                            },
+                            "classShortName" : {
+                              "type" : "object",
+                              "$ref" : "urn:jsonschema:iof:v2:ClassShortName"
+                            },
+                            "clazz" : {
+                              "type" : "object",
+                              "$ref" : "urn:jsonschema:iof:v2:Class"
+                            }
+                          }
+                        },
+                        "notQualifiedSubstituteClass" : {
+                          "type" : "object",
+                          "id" : "urn:jsonschema:iof:v2:NotQualifiedSubstituteClass",
+                          "properties" : {
+                            "classId" : {
+                              "type" : "object",
+                              "$ref" : "urn:jsonschema:iof:v2:ClassId"
+                            },
+                            "classShortName" : {
+                              "type" : "object",
+                              "$ref" : "urn:jsonschema:iof:v2:ClassShortName"
+                            },
+                            "clazz" : {
+                              "type" : "object",
+                              "$ref" : "urn:jsonschema:iof:v2:Class"
+                            }
+                          }
+                        },
+                        "entryFeeIdOrEntryFee" : {
+                          "type" : "array"
+                        },
+                        "modifyDate" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                        },
+                        "lowAge" : {
+                          "type" : "string"
+                        },
+                        "highAge" : {
+                          "type" : "string"
+                        },
+                        "sex" : {
+                          "type" : "string"
+                        },
+                        "numberInTeam" : {
+                          "type" : "string"
+                        },
+                        "teamEntry" : {
+                          "type" : "string"
+                        },
+                        "maxNumberInClass" : {
+                          "type" : "string"
+                        },
+                        "actualForRanking" : {
+                          "type" : "string"
+                        },
+                        "timePresentation" : {
+                          "type" : "string"
+                        },
+                        "allowedMinAge" : {
+                          "type" : "string"
+                        },
+                        "allowedMaxAge" : {
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "sequence" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              },
+              "rank" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v2:Rank",
+                  "properties" : {
+                    "name" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:Name"
+                    },
+                    "organisationId" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:OrganisationId"
+                    },
+                    "organisation" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:Organisation",
+                      "properties" : {
+                        "organisationId" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:OrganisationId"
+                        },
+                        "name" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:Name"
+                        },
+                        "shortName" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:ShortName"
+                        },
+                        "organisationTypeId" : {
+                          "type" : "object",
+                          "id" : "urn:jsonschema:iof:v2:OrganisationTypeId",
+                          "properties" : {
+                            "content" : {
+                              "type" : "string"
+                            },
+                            "type" : {
+                              "type" : "string"
+                            },
+                            "idManager" : {
+                              "type" : "string"
+                            }
+                          }
+                        },
+                        "organisationType" : {
+                          "type" : "object",
+                          "id" : "urn:jsonschema:iof:v2:OrganisationType",
+                          "properties" : {
+                            "organisationTypeId" : {
+                              "type" : "object",
+                              "$ref" : "urn:jsonschema:iof:v2:OrganisationTypeId"
+                            },
+                            "name" : {
+                              "type" : "object",
+                              "$ref" : "urn:jsonschema:iof:v2:Name"
+                            },
+                            "subOrganisationType" : {
+                              "type" : "array",
+                              "items" : {
+                                "type" : "object",
+                                "id" : "urn:jsonschema:iof:v2:SubOrganisationType",
+                                "properties" : {
+                                  "organisationTypeId" : {
+                                    "type" : "object",
+                                    "$ref" : "urn:jsonschema:iof:v2:OrganisationTypeId"
+                                  },
+                                  "organisationType" : {
+                                    "type" : "object",
+                                    "$ref" : "urn:jsonschema:iof:v2:OrganisationType"
+                                  }
+                                }
+                              }
+                            },
+                            "modifyDate" : {
+                              "type" : "object",
+                              "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                            }
+                          }
+                        },
+                        "countryId" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:CountryId"
+                        },
+                        "country" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:Country"
+                        },
+                        "address" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "$ref" : "urn:jsonschema:iof:v2:Address"
+                          }
+                        },
+                        "tele" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "$ref" : "urn:jsonschema:iof:v2:Tele"
+                          }
+                        },
+                        "account" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "$ref" : "urn:jsonschema:iof:v2:Account"
+                          }
+                        },
+                        "contact" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "$ref" : "urn:jsonschema:iof:v2:Contact"
+                          }
+                        },
+                        "subOrganisation" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "id" : "urn:jsonschema:iof:v2:SubOrganisation",
+                            "properties" : {
+                              "organisationId" : {
+                                "type" : "object",
+                                "$ref" : "urn:jsonschema:iof:v2:OrganisationId"
+                              },
+                              "organisation" : {
+                                "type" : "object",
+                                "$ref" : "urn:jsonschema:iof:v2:Organisation"
+                              }
+                            }
+                          }
+                        },
+                        "modifyDate" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                        }
+                      }
+                    },
+                    "rankPosition" : {
+                      "type" : "string"
+                    },
+                    "rankValue" : {
+                      "type" : "string"
+                    },
+                    "validFromDate" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:ValidFromDate",
+                      "properties" : {
+                        "date" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:Date"
+                        }
+                      }
+                    },
+                    "validToDate" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:ValidToDate",
+                      "properties" : {
+                        "date" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:Date"
+                        }
+                      }
+                    },
+                    "modifyDate" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                    }
+                  }
+                }
+              },
+              "modifyDate" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+              },
+              "ccard" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v2:CCard",
+                  "properties" : {
+                    "punchingUnitType" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:PunchingUnitType",
+                      "properties" : {
+                        "value" : {
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "modifyDate" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                    },
+                    "miscData" : {
+                      "type" : "string"
+                    },
+                    "ccardId" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "iofversion" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:IOFVersion"
+        }
+      }
+    },
+    "rankList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v2:RankList",
+      "properties" : {
+        "name" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:Name"
+        },
+        "organisationId" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:OrganisationId"
+        },
+        "organisation" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:Organisation"
+        },
+        "competitor" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "$ref" : "urn:jsonschema:iof:v2:Competitor"
+          }
+        },
+        "iofversion" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:IOFVersion"
+        }
+      }
+    },
+    "clubList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v2:ClubList",
+      "properties" : {
+        "club" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "$ref" : "urn:jsonschema:iof:v2:Club"
+          }
+        },
+        "iofversion" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:IOFVersion"
+        }
+      }
+    },
+    "eventList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v2:EventList",
+      "properties" : {
+        "eventClassification" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v2:EventClassification",
+            "properties" : {
+              "eventClassificationId" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v2:EventClassificationId",
+                "properties" : {
+                  "content" : {
+                    "type" : "string"
+                  },
+                  "type" : {
+                    "type" : "string"
+                  },
+                  "idManager" : {
+                    "type" : "string"
+                  }
+                }
+              },
+              "name" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:Name"
+              },
+              "modifyDate" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+              }
+            }
+          }
+        },
+        "event" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v2:Event",
+            "properties" : {
+              "eventId" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v2:EventId",
+                "properties" : {
+                  "content" : {
+                    "type" : "string"
+                  },
+                  "type" : {
+                    "type" : "string"
+                  },
+                  "idManager" : {
+                    "type" : "string"
+                  }
+                }
+              },
+              "name" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:Name"
+              },
+              "eventClassificationId" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:EventClassificationId"
+              },
+              "eventClassification" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:EventClassification"
+              },
+              "startDate" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v2:StartDate",
+                "properties" : {
+                  "date" : {
+                    "type" : "object",
+                    "$ref" : "urn:jsonschema:iof:v2:Date"
+                  },
+                  "clock" : {
+                    "type" : "object",
+                    "$ref" : "urn:jsonschema:iof:v2:Clock"
+                  }
+                }
+              },
+              "finishDate" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v2:FinishDate",
+                "properties" : {
+                  "date" : {
+                    "type" : "object",
+                    "$ref" : "urn:jsonschema:iof:v2:Date"
+                  },
+                  "clock" : {
+                    "type" : "object",
+                    "$ref" : "urn:jsonschema:iof:v2:Clock"
+                  }
+                }
+              },
+              "eventOfficial" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v2:EventOfficial",
+                  "properties" : {
+                    "eventOfficialRole" : {
+                      "type" : "string"
+                    },
+                    "personId" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:PersonId"
+                    },
+                    "person" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:Person"
+                    }
+                  }
+                }
+              },
+              "organiser" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v2:Organiser",
+                "properties" : {
+                  "clubIdOrClub" : {
+                    "type" : "array"
+                  }
+                }
+              },
+              "eventClass" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v2:EventClass",
+                  "properties" : {
+                    "classId" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:ClassId"
+                    },
+                    "clazz" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:Class"
+                    },
+                    "eventRaceIdAndClassRaceInfoAndPunchingUnitType" : {
+                      "type" : "array"
+                    },
+                    "transferedToClass" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:TransferedToClass",
+                      "properties" : {
+                        "classId" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:ClassId"
+                        },
+                        "classShortName" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:ClassShortName"
+                        }
+                      }
+                    },
+                    "dividedIntoClass" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:DividedIntoClass",
+                      "properties" : {
+                        "eventClass" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "$ref" : "urn:jsonschema:iof:v2:EventClass"
+                          }
+                        }
+                      }
+                    },
+                    "modifyDate" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                    }
+                  }
+                }
+              },
+              "eventRace" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v2:EventRace",
+                  "properties" : {
+                    "eventRaceId" : {
+                      "type" : "string"
+                    },
+                    "name" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:Name"
+                    },
+                    "raceDate" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:RaceDate",
+                      "properties" : {
+                        "date" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:Date"
+                        },
+                        "clock" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:Clock"
+                        }
+                      }
+                    },
+                    "modifyDate" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                    }
+                  }
+                }
+              },
+              "webURL" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "string"
+                }
+              },
+              "entryData" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v2:EntryData",
+                "properties" : {
+                  "addressAndTele" : {
+                    "type" : "array"
+                  }
+                }
+              },
+              "service" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v2:Service",
+                  "properties" : {
+                    "serviceId" : {
+                      "type" : "string"
+                    },
+                    "name" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:Name"
+                    },
+                    "amount" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:Amount",
+                      "properties" : {
+                        "content" : {
+                          "type" : "string"
+                        },
+                        "currency" : {
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "comment" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:Comment",
+                      "properties" : {
+                        "content" : {
+                          "type" : "string"
+                        },
+                        "languageId" : {
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "maxNumber" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:MaxNumber",
+                      "properties" : {
+                        "content" : {
+                          "type" : "string"
+                        },
+                        "unit" : {
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "modifyDate" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                    }
+                  }
+                }
+              },
+              "account" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "urn:jsonschema:iof:v2:Account"
+                }
+              },
+              "modifyDate" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+              },
+              "eventForm" : {
+                "type" : "string"
+              }
+            }
+          }
+        },
+        "iofversion" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:IOFVersion"
+        }
+      }
+    },
+    "serviceRequestList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v2:ServiceRequestList",
+      "properties" : {
+        "clubServiceRequest" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v2:ClubServiceRequest",
+            "properties" : {
+              "clubId" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:ClubId"
+              },
+              "club" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:Club"
+              },
+              "serviceRequest" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v2:ServiceRequest",
+                  "properties" : {
+                    "serviceId" : {
+                      "type" : "string"
+                    },
+                    "service" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:Service"
+                    },
+                    "serviceOrderNumber" : {
+                      "type" : "string"
+                    },
+                    "requestedQuantity" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:RequestedQuantity",
+                      "properties" : {
+                        "content" : {
+                          "type" : "string"
+                        },
+                        "unit" : {
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "deliveredQuantity" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:DeliveredQuantity",
+                      "properties" : {
+                        "content" : {
+                          "type" : "string"
+                        },
+                        "unit" : {
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "comment" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:Comment"
+                    },
+                    "modifyDate" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                    }
+                  }
+                }
+              },
+              "personServiceRequest" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v2:PersonServiceRequest",
+                  "properties" : {
+                    "personId" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:PersonId"
+                    },
+                    "person" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:Person"
+                    },
+                    "serviceRequest" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "urn:jsonschema:iof:v2:ServiceRequest"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "organisationServiceRequest" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v2:OrganisationServiceRequest",
+            "properties" : {
+              "organisationId" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:OrganisationId"
+              },
+              "organisation" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:Organisation"
+              },
+              "serviceRequest" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "urn:jsonschema:iof:v2:ServiceRequest"
+                }
+              },
+              "personServiceRequest" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "urn:jsonschema:iof:v2:PersonServiceRequest"
+                }
+              }
+            }
+          }
+        },
+        "iofversion" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:IOFVersion"
+        }
+      }
+    },
+    "entryList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v2:EntryList",
+      "properties" : {
+        "clubEntry" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v2:ClubEntry",
+            "properties" : {
+              "clubId" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:ClubId"
+              },
+              "club" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:Club"
+              },
+              "contact" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:Contact"
+              },
+              "entry" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v2:Entry",
+                  "properties" : {
+                    "entryId" : {
+                      "type" : "string"
+                    },
+                    "personId" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:PersonId"
+                    },
+                    "person" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:Person"
+                    },
+                    "rank" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "urn:jsonschema:iof:v2:Rank"
+                      }
+                    },
+                    "teamName" : {
+                      "type" : "string"
+                    },
+                    "clubIdOrClubAndTeamSequence" : {
+                      "type" : "array"
+                    },
+                    "entryClass" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v2:EntryClass",
+                        "properties" : {
+                          "classId" : {
+                            "type" : "object",
+                            "$ref" : "urn:jsonschema:iof:v2:ClassId"
+                          },
+                          "classShortName" : {
+                            "type" : "object",
+                            "$ref" : "urn:jsonschema:iof:v2:ClassShortName"
+                          },
+                          "eventClass" : {
+                            "type" : "object",
+                            "$ref" : "urn:jsonschema:iof:v2:EventClass"
+                          },
+                          "sequence" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "allocationControl" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:AllocationControl",
+                      "properties" : {
+                        "clubId" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:ClubId"
+                        },
+                        "club" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:Club"
+                        },
+                        "personId" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:PersonId"
+                        },
+                        "person" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:Person"
+                        },
+                        "allocationControlType" : {
+                          "type" : "object",
+                          "id" : "urn:jsonschema:iof:v2:AllocationControlType",
+                          "properties" : {
+                            "value" : {
+                              "type" : "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "entryDate" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:EntryDate",
+                      "properties" : {
+                        "date" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:Date"
+                        },
+                        "clock" : {
+                          "type" : "object",
+                          "$ref" : "urn:jsonschema:iof:v2:Clock"
+                        }
+                      }
+                    },
+                    "modifyDate" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                    },
+                    "nonCompetitor" : {
+                      "type" : "string"
+                    },
+                    "ccard" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "urn:jsonschema:iof:v2:CCard"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "iofversion" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:IOFVersion"
+        }
+      }
+    },
+    "startList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v2:StartList",
+      "properties" : {
+        "eventId" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:EventId"
+        },
+        "event" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:Event"
+        },
+        "classStart" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v2:ClassStart",
+            "properties" : {
+              "classId" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:ClassId"
+              },
+              "classShortName" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:ClassShortName"
+              },
+              "eventClass" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:EventClass"
+              },
+              "personStartOrTeamStart" : {
+                "type" : "array"
+              }
+            }
+          }
+        },
+        "modifyDate" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+        },
+        "iofversion" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:IOFVersion"
+        }
+      }
+    },
+    "resultList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v2:ResultList",
+      "properties" : {
+        "eventId" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:EventId"
+        },
+        "event" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:Event"
+        },
+        "classResult" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v2:ClassResult",
+            "properties" : {
+              "classId" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:ClassId"
+              },
+              "classShortName" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:ClassShortName"
+              },
+              "eventClass" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:EventClass"
+              },
+              "personResultOrTeamResult" : {
+                "type" : "array"
+              }
+            }
+          }
+        },
+        "modifyDate" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "iofversion" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:IOFVersion"
+        }
+      }
+    },
+    "classData" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v2:ClassData",
+      "properties" : {
+        "classType" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "$ref" : "urn:jsonschema:iof:v2:ClassType"
+          }
+        },
+        "clazz" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "$ref" : "urn:jsonschema:iof:v2:Class"
+          }
+        },
+        "iofversion" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:IOFVersion"
+        }
+      }
+    },
+    "courseData" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v2:CourseData",
+      "properties" : {
+        "map" : {
+          "type" : "object",
+          "id" : "urn:jsonschema:iof:v2:Map",
+          "properties" : {
+            "scale" : {
+              "type" : "string"
+            },
+            "mapPosition" : {
+              "type" : "object",
+              "id" : "urn:jsonschema:iof:v2:MapPosition",
+              "properties" : {
+                "x" : {
+                  "type" : "string"
+                },
+                "y" : {
+                  "type" : "string"
+                },
+                "unit" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        },
+        "startPoint" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v2:StartPoint",
+            "properties" : {
+              "startPointCode" : {
+                "type" : "string"
+              },
+              "description" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v2:Description",
+                "properties" : {
+                  "box" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:Box",
+                      "properties" : {
+                        "symbol" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "id" : "urn:jsonschema:iof:v2:Symbol",
+                            "properties" : {
+                              "symbolId" : {
+                                "type" : "string"
+                              },
+                              "name" : {
+                                "type" : "object",
+                                "$ref" : "urn:jsonschema:iof:v2:Name"
+                              }
+                            }
+                          }
+                        },
+                        "text" : {
+                          "type" : "object",
+                          "id" : "urn:jsonschema:iof:v2:Text",
+                          "properties" : {
+                            "content" : {
+                              "type" : "string"
+                            },
+                            "languageId" : {
+                              "type" : "string"
+                            }
+                          }
+                        },
+                        "column" : {
+                          "type" : "string"
+                        },
+                        "hasDiagonal" : {
+                          "type" : "string"
+                        }
+                      }
+                    }
+                  },
+                  "modifyDate" : {
+                    "type" : "object",
+                    "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                  }
+                }
+              },
+              "controlPosition" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v2:ControlPosition",
+                "properties" : {
+                  "x" : {
+                    "type" : "string"
+                  },
+                  "y" : {
+                    "type" : "string"
+                  },
+                  "unit" : {
+                    "type" : "string"
+                  }
+                }
+              },
+              "mapPosition" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:MapPosition"
+              },
+              "comment" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:Comment"
+              },
+              "distanceFromStart" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v2:DistanceFromStart",
+                "properties" : {
+                  "content" : {
+                    "type" : "string"
+                  },
+                  "unit" : {
+                    "type" : "string"
+                  }
+                }
+              },
+              "modifyDate" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+              }
+            }
+          }
+        },
+        "control" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v2:Control",
+            "properties" : {
+              "controlCode" : {
+                "type" : "string"
+              },
+              "description" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:Description"
+              },
+              "controlPosition" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:ControlPosition"
+              },
+              "punchingUnitOrPunchPattern" : {
+                "type" : "array"
+              },
+              "punchingUnitType" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:PunchingUnitType"
+              },
+              "mapPosition" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:MapPosition"
+              },
+              "comment" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "urn:jsonschema:iof:v2:Comment"
+                }
+              },
+              "modifyDate" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+              }
+            }
+          }
+        },
+        "finishPoint" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v2:FinishPoint",
+            "properties" : {
+              "finishPointCode" : {
+                "type" : "string"
+              },
+              "description" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:Description"
+              },
+              "controlPosition" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:ControlPosition"
+              },
+              "punchingUnitOrPunchPattern" : {
+                "type" : "array"
+              },
+              "punchingUnitType" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:PunchingUnitType"
+              },
+              "mapPosition" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:MapPosition"
+              },
+              "comment" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:Comment"
+              },
+              "modifyDate" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+              }
+            }
+          }
+        },
+        "course" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v2:Course",
+            "properties" : {
+              "courseName" : {
+                "type" : "string"
+              },
+              "courseId" : {
+                "type" : "string"
+              },
+              "eventId" : {
+                "type" : "object",
+                "$ref" : "urn:jsonschema:iof:v2:EventId"
+              },
+              "eventRaceId" : {
+                "type" : "string"
+              },
+              "classIdOrClassShortName" : {
+                "type" : "array"
+              },
+              "courseVariation" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v2:CourseVariation",
+                  "properties" : {
+                    "courseVariationId" : {
+                      "type" : "string"
+                    },
+                    "name" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:Name"
+                    },
+                    "courseLength" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:CourseLength",
+                      "properties" : {
+                        "content" : {
+                          "type" : "string"
+                        },
+                        "unit" : {
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "courseClimb" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:CourseClimb",
+                      "properties" : {
+                        "content" : {
+                          "type" : "string"
+                        },
+                        "unit" : {
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "startPointCode" : {
+                      "type" : "string"
+                    },
+                    "startPoint" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:StartPoint"
+                    },
+                    "finishChute" : {
+                      "type" : "string"
+                    },
+                    "courseControl" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v2:CourseControl",
+                        "properties" : {
+                          "sequence" : {
+                            "type" : "string"
+                          },
+                          "controlCode" : {
+                            "type" : "string"
+                          },
+                          "control" : {
+                            "type" : "object",
+                            "$ref" : "urn:jsonschema:iof:v2:Control"
+                          },
+                          "comment" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "$ref" : "urn:jsonschema:iof:v2:Comment"
+                            }
+                          },
+                          "legLength" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "id" : "urn:jsonschema:iof:v2:LegLength",
+                              "properties" : {
+                                "content" : {
+                                  "type" : "string"
+                                },
+                                "fromControl" : {
+                                  "type" : "string"
+                                },
+                                "unit" : {
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          },
+                          "mapTextPosition" : {
+                            "type" : "object",
+                            "id" : "urn:jsonschema:iof:v2:MapTextPosition",
+                            "properties" : {
+                              "mapPosition" : {
+                                "type" : "object",
+                                "$ref" : "urn:jsonschema:iof:v2:MapPosition"
+                              }
+                            }
+                          },
+                          "markedRoute" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "finishPointCode" : {
+                      "type" : "string"
+                    },
+                    "finishPoint" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:FinishPoint"
+                    },
+                    "distanceToFinish" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:DistanceToFinish",
+                      "properties" : {
+                        "content" : {
+                          "type" : "string"
+                        },
+                        "fromControl" : {
+                          "type" : "string"
+                        },
+                        "unit" : {
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "modifyDate" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:ModifyDate"
+                    },
+                    "numberOfRunners" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              },
+              "courseSectionList" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v2:CourseSectionList",
+                "properties" : {
+                  "startPointCode" : {
+                    "type" : "string"
+                  },
+                  "courseSection" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v2:CourseSection",
+                      "properties" : {
+                        "courseSectionId" : {
+                          "type" : "string"
+                        },
+                        "courseBranch" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "id" : "urn:jsonschema:iof:v2:CourseBranch",
+                            "properties" : {
+                              "courseBranchId" : {
+                                "type" : "string"
+                              },
+                              "courseControl" : {
+                                "type" : "array",
+                                "items" : {
+                                  "type" : "object",
+                                  "$ref" : "urn:jsonschema:iof:v2:CourseControl"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "finishPointCode" : {
+                    "type" : "string"
+                  },
+                  "distanceToFinish" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "object",
+                      "$ref" : "urn:jsonschema:iof:v2:DistanceToFinish"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "iofversion" : {
+          "type" : "object",
+          "$ref" : "urn:jsonschema:iof:v2:IOFVersion"
+        }
+      }
+    }
+  }
+}
