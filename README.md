@@ -20,7 +20,7 @@ See [official v3 repo](https://github.com/international-orienteering-federation/
 
 - [Official XSD](./IOF.xsd) for v3
 - [Unofficial JSON Schema](./iof_v3_schema.json) for v3, converted from unofficial\* XSD with a custom Jackson JsonSchemaGenerator
-- [Unofficial JSON Schema (no URN)](./iof_v3_schema_no_urn.json) same as previous, jsut with resolved references (no URN references). Converted previous schema with [un-urn-json-func](https://github.com/mikaello/un-urn-json-func)
+- [Unofficial JSON Schema (no URN)](./iof_v3_schema_no_urn.json) same as previous, jsut with resolved references (no URN references). Converted previous schema with [un-urn-json-func](https://github.com/mikaello/un-urn-json-func) (in reality [un-urn-json.kt](https://gist.github.com/mikaello/61c05825baa73e920c3ef34417589cc0))
 - [Unofficial JSON Schema](./IOF_v3.json) for v3, converted from unofficial\* XSD with [jsonix-schema-compiler](https://github.com/highsource/jsonix-schema-compiler)
 - [JSONIX mappings](./IOF_v3.js) for v3, generated from official XSD with [jsonix-schema-compiler](https://github.com/highsource/jsonix-schema-compiler)
 
