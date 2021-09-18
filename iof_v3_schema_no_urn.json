@@ -1,0 +1,2462 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:iof:v3:IofV3",
+  "additionalProperties" : false,
+  "properties" : {
+    "competitorList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v3:CompetitorList",
+      "properties" : {
+        "iofVersion" : {
+          "type" : "string"
+        },
+        "createTime" : {
+          "type" : "integer",
+          "format" : "utc-millisec"
+        },
+        "creator" : {
+          "type" : "string"
+        },
+        "competitor" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v3:Competitor",
+            "properties" : {
+              "person" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v3:Person",
+                "properties" : {
+                  "id" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v3:Id",
+                      "properties" : {
+                        "value" : {
+                          "type" : "string"
+                        },
+                        "type" : {
+                          "type" : "string"
+                        }
+                      }
+                    }
+                  },
+                  "name" : {
+                    "type" : "object",
+                    "id" : "urn:jsonschema:iof:v3:PersonName",
+                    "properties" : {
+                      "family" : {
+                        "type" : "string"
+                      },
+                      "given" : {
+                        "type" : "string"
+                      }
+                    }
+                  },
+                  "birthDate" : {
+                    "type" : "integer",
+                    "format" : "utc-millisec"
+                  },
+                  "nationality" : {
+                    "type" : "object",
+                    "id" : "urn:jsonschema:iof:v3:Country",
+                    "properties" : {
+                      "value" : {
+                        "type" : "string"
+                      },
+                      "code" : {
+                        "type" : "string"
+                      }
+                    }
+                  },
+                  "address" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v3:Address",
+                      "properties" : {
+                        "careOf" : {
+                          "type" : "string"
+                        },
+                        "street" : {
+                          "type" : "string"
+                        },
+                        "zipCode" : {
+                          "type" : "string"
+                        },
+                        "city" : {
+                          "type" : "string"
+                        },
+                        "state" : {
+                          "type" : "string"
+                        },
+                        "country" : {
+                          "type" : "object",
+                          "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/nationality"
+                        },
+                        "type" : {
+                          "type" : "string"
+                        },
+                        "modifyTime" : {
+                          "type" : "integer",
+                          "format" : "utc-millisec"
+                        }
+                      }
+                    }
+                  },
+                  "contact" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v3:Contact",
+                      "properties" : {
+                        "value" : {
+                          "type" : "string"
+                        },
+                        "type" : {
+                          "type" : "string"
+                        },
+                        "modifyTime" : {
+                          "type" : "integer",
+                          "format" : "utc-millisec"
+                        }
+                      }
+                    }
+                  },
+                  "extensions" : {
+                    "type" : "object",
+                    "id" : "urn:jsonschema:iof:v3:Extensions",
+                    "properties" : {
+                      "any" : {
+                        "type" : "array"
+                      }
+                    }
+                  },
+                  "sex" : {
+                    "type" : "string"
+                  },
+                  "modifyTime" : {
+                    "type" : "integer",
+                    "format" : "utc-millisec"
+                  }
+                }
+              },
+              "organisation" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:Organisation",
+                  "properties" : {
+                    "id" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                    },
+                    "name" : {
+                      "type" : "string"
+                    },
+                    "shortName" : {
+                      "type" : "string"
+                    },
+                    "mediaName" : {
+                      "type" : "string"
+                    },
+                    "parentOrganisationId" : {
+                      "type" : "integer"
+                    },
+                    "country" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/nationality"
+                    },
+                    "address" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/address/items"
+                      }
+                    },
+                    "contact" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/contact/items"
+                      }
+                    },
+                    "position" : {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:iof:v3:GeoPosition",
+                      "properties" : {
+                        "lng" : {
+                          "type" : "number"
+                        },
+                        "lat" : {
+                          "type" : "number"
+                        },
+                        "alt" : {
+                          "type" : "number"
+                        }
+                      }
+                    },
+                    "account" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v3:Account",
+                        "properties" : {
+                          "value" : {
+                            "type" : "string"
+                          },
+                          "type" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "role" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v3:Role",
+                        "properties" : {
+                          "person" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person"
+                          },
+                          "type" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "logotype" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v3:Image",
+                        "properties" : {
+                          "value" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "integer"
+                            }
+                          },
+                          "url" : {
+                            "type" : "string"
+                          },
+                          "mediaType" : {
+                            "type" : "string"
+                          },
+                          "width" : {
+                            "type" : "integer"
+                          },
+                          "height" : {
+                            "type" : "integer"
+                          },
+                          "resolution" : {
+                            "type" : "number"
+                          }
+                        }
+                      }
+                    },
+                    "extensions" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                    },
+                    "type" : {
+                      "type" : "string"
+                    },
+                    "modifyTime" : {
+                      "type" : "integer",
+                      "format" : "utc-millisec"
+                    }
+                  }
+                }
+              },
+              "controlCard" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:ControlCard",
+                  "properties" : {
+                    "value" : {
+                      "type" : "string"
+                    },
+                    "punchingSystem" : {
+                      "type" : "string"
+                    },
+                    "modifyTime" : {
+                      "type" : "integer",
+                      "format" : "utc-millisec"
+                    }
+                  }
+                }
+              },
+              "clazz" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:Class",
+                  "properties" : {
+                    "id" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                    },
+                    "name" : {
+                      "type" : "string"
+                    },
+                    "shortName" : {
+                      "type" : "string"
+                    },
+                    "classType" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v3:ClassType",
+                        "properties" : {
+                          "id" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                          },
+                          "name" : {
+                            "type" : "string"
+                          },
+                          "modifyTime" : {
+                            "type" : "integer",
+                            "format" : "utc-millisec"
+                          }
+                        }
+                      }
+                    },
+                    "leg" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v3:Leg",
+                        "properties" : {
+                          "name" : {
+                            "type" : "string"
+                          },
+                          "extensions" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                          },
+                          "minNumberOfCompetitors" : {
+                            "type" : "integer"
+                          },
+                          "maxNumberOfCompetitors" : {
+                            "type" : "integer"
+                          }
+                        }
+                      }
+                    },
+                    "teamFee" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v3:Fee",
+                        "properties" : {
+                          "id" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                          },
+                          "name" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "id" : "urn:jsonschema:iof:v3:LanguageString",
+                              "properties" : {
+                                "value" : {
+                                  "type" : "string"
+                                },
+                                "language" : {
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          },
+                          "amount" : {
+                            "type" : "object",
+                            "id" : "urn:jsonschema:iof:v3:Amount",
+                            "properties" : {
+                              "value" : {
+                                "type" : "number"
+                              },
+                              "currency" : {
+                                "type" : "string"
+                              }
+                            }
+                          },
+                          "taxableAmount" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/teamFee/items/properties/amount"
+                          },
+                          "percentage" : {
+                            "type" : "number"
+                          },
+                          "taxablePercentage" : {
+                            "type" : "number"
+                          },
+                          "validFromTime" : {
+                            "type" : "integer",
+                            "format" : "utc-millisec"
+                          },
+                          "validToTime" : {
+                            "type" : "integer",
+                            "format" : "utc-millisec"
+                          },
+                          "fromDateOfBirth" : {
+                            "type" : "integer",
+                            "format" : "utc-millisec"
+                          },
+                          "toDateOfBirth" : {
+                            "type" : "integer",
+                            "format" : "utc-millisec"
+                          },
+                          "extensions" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                          },
+                          "type" : {
+                            "type" : "string"
+                          },
+                          "modifyTime" : {
+                            "type" : "integer",
+                            "format" : "utc-millisec"
+                          }
+                        }
+                      }
+                    },
+                    "fee" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/teamFee/items"
+                      }
+                    },
+                    "status" : {
+                      "type" : "string",
+                      "enum" : [ "NORMAL", "DIVIDED", "JOINED", "INVALIDATED", "INVALIDATED_NO_FEE" ]
+                    },
+                    "raceClass" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v3:RaceClass",
+                        "properties" : {
+                          "punchingSystem" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "string"
+                            }
+                          },
+                          "teamFee" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/teamFee/items"
+                            }
+                          },
+                          "fee" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/teamFee/items"
+                            }
+                          },
+                          "firstStart" : {
+                            "type" : "integer",
+                            "format" : "utc-millisec"
+                          },
+                          "status" : {
+                            "type" : "string",
+                            "enum" : [ "START_TIMES_NOT_ALLOCATED", "START_TIMES_ALLOCATED", "NOT_USED", "COMPLETED", "INVALIDATED", "INVALIDATED_NO_FEE" ]
+                          },
+                          "course" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "id" : "urn:jsonschema:iof:v3:SimpleCourse",
+                              "properties" : {
+                                "id" : {
+                                  "type" : "object",
+                                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                                },
+                                "name" : {
+                                  "type" : "string"
+                                },
+                                "courseFamily" : {
+                                  "type" : "string"
+                                },
+                                "length" : {
+                                  "type" : "number"
+                                },
+                                "climb" : {
+                                  "type" : "number"
+                                },
+                                "numberOfControls" : {
+                                  "type" : "integer"
+                                }
+                              }
+                            }
+                          },
+                          "onlineControl" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "id" : "urn:jsonschema:iof:v3:Control",
+                              "properties" : {
+                                "id" : {
+                                  "type" : "object",
+                                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                                },
+                                "punchingUnitId" : {
+                                  "type" : "array",
+                                  "items" : {
+                                    "type" : "object",
+                                    "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                                  }
+                                },
+                                "name" : {
+                                  "type" : "array",
+                                  "items" : {
+                                    "type" : "object",
+                                    "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/teamFee/items/properties/name/items"
+                                  }
+                                },
+                                "position" : {
+                                  "type" : "object",
+                                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items/properties/position"
+                                },
+                                "mapPosition" : {
+                                  "type" : "object",
+                                  "id" : "urn:jsonschema:iof:v3:MapPosition",
+                                  "properties" : {
+                                    "x" : {
+                                      "type" : "number"
+                                    },
+                                    "y" : {
+                                      "type" : "number"
+                                    },
+                                    "unit" : {
+                                      "type" : "string"
+                                    }
+                                  }
+                                },
+                                "extensions" : {
+                                  "type" : "object",
+                                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                                },
+                                "type" : {
+                                  "type" : "string",
+                                  "enum" : [ "CONTROL", "START", "FINISH", "CROSSING_POINT", "END_OF_MARKED_ROUTE" ]
+                                },
+                                "modifyTime" : {
+                                  "type" : "integer",
+                                  "format" : "utc-millisec"
+                                }
+                              }
+                            }
+                          },
+                          "extensions" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                          },
+                          "raceNumber" : {
+                            "type" : "integer"
+                          },
+                          "maxNumberOfCompetitors" : {
+                            "type" : "integer"
+                          },
+                          "modifyTime" : {
+                            "type" : "integer",
+                            "format" : "utc-millisec"
+                          }
+                        }
+                      }
+                    },
+                    "tooFewEntriesSubstituteClass" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items"
+                    },
+                    "tooManyEntriesSubstituteClass" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items"
+                    },
+                    "extensions" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                    },
+                    "minAge" : {
+                      "type" : "integer"
+                    },
+                    "maxAge" : {
+                      "type" : "integer"
+                    },
+                    "sex" : {
+                      "type" : "string"
+                    },
+                    "minNumberOfTeamMembers" : {
+                      "type" : "integer"
+                    },
+                    "maxNumberOfTeamMembers" : {
+                      "type" : "integer"
+                    },
+                    "minTeamAge" : {
+                      "type" : "integer"
+                    },
+                    "maxTeamAge" : {
+                      "type" : "integer"
+                    },
+                    "numberOfCompetitors" : {
+                      "type" : "integer"
+                    },
+                    "maxNumberOfCompetitors" : {
+                      "type" : "integer"
+                    },
+                    "resultListMode" : {
+                      "type" : "string"
+                    },
+                    "modifyTime" : {
+                      "type" : "integer",
+                      "format" : "utc-millisec"
+                    }
+                  }
+                }
+              },
+              "score" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:Score",
+                  "properties" : {
+                    "value" : {
+                      "type" : "number"
+                    },
+                    "type" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              },
+              "extensions" : {
+                "type" : "object",
+                "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+              },
+              "modifyTime" : {
+                "type" : "integer",
+                "format" : "utc-millisec"
+              }
+            }
+          }
+        },
+        "extensions" : {
+          "type" : "object",
+          "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+        }
+      }
+    },
+    "organisationList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v3:OrganisationList",
+      "properties" : {
+        "iofVersion" : {
+          "type" : "string"
+        },
+        "createTime" : {
+          "type" : "integer",
+          "format" : "utc-millisec"
+        },
+        "creator" : {
+          "type" : "string"
+        },
+        "organisation" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items"
+          }
+        },
+        "extensions" : {
+          "type" : "object",
+          "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+        }
+      }
+    },
+    "eventList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v3:EventList",
+      "properties" : {
+        "iofVersion" : {
+          "type" : "string"
+        },
+        "createTime" : {
+          "type" : "integer",
+          "format" : "utc-millisec"
+        },
+        "creator" : {
+          "type" : "string"
+        },
+        "event" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v3:Event",
+            "properties" : {
+              "id" : {
+                "type" : "object",
+                "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+              },
+              "name" : {
+                "type" : "string"
+              },
+              "startTime" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v3:DateAndOptionalTime",
+                "properties" : {
+                  "date" : {
+                    "type" : "integer",
+                    "format" : "utc-millisec"
+                  },
+                  "time" : {
+                    "type" : "integer",
+                    "format" : "utc-millisec"
+                  }
+                }
+              },
+              "endTime" : {
+                "type" : "object",
+                "$ref" : "#/properties/eventList/properties/event/items/properties/startTime"
+              },
+              "status" : {
+                "type" : "string",
+                "enum" : [ "PLANNED", "APPLIED", "PROPOSED", "SANCTIONED", "CANCELED", "RESCHEDULED" ]
+              },
+              "classification" : {
+                "type" : "string",
+                "enum" : [ "INTERNATIONAL", "NATIONAL", "REGIONAL", "LOCAL", "CLUB" ]
+              },
+              "form" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "string",
+                  "enum" : [ "INDIVIDUAL", "TEAM", "RELAY" ]
+                }
+              },
+              "organiser" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items"
+                }
+              },
+              "official" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items/properties/role/items"
+                }
+              },
+              "clazz" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items"
+                }
+              },
+              "race" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:Race",
+                  "properties" : {
+                    "raceNumber" : {
+                      "type" : "integer"
+                    },
+                    "name" : {
+                      "type" : "string"
+                    },
+                    "startTime" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/eventList/properties/event/items/properties/startTime"
+                    },
+                    "endTime" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/eventList/properties/event/items/properties/startTime"
+                    },
+                    "status" : {
+                      "type" : "string",
+                      "enum" : [ "PLANNED", "APPLIED", "PROPOSED", "SANCTIONED", "CANCELED", "RESCHEDULED" ]
+                    },
+                    "classification" : {
+                      "type" : "string",
+                      "enum" : [ "INTERNATIONAL", "NATIONAL", "REGIONAL", "LOCAL", "CLUB" ]
+                    },
+                    "position" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items/properties/position"
+                    },
+                    "discipline" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "string",
+                        "enum" : [ "SPRINT", "MIDDLE", "LONG", "ULTRALONG", "OTHER" ]
+                      }
+                    },
+                    "organiser" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items"
+                      }
+                    },
+                    "official" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items/properties/role/items"
+                      }
+                    },
+                    "service" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v3:Service",
+                        "properties" : {
+                          "id" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                          },
+                          "name" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/teamFee/items/properties/name/items"
+                            }
+                          },
+                          "fee" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/teamFee/items"
+                            }
+                          },
+                          "description" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/teamFee/items/properties/name/items"
+                            }
+                          },
+                          "maxNumber" : {
+                            "type" : "number"
+                          },
+                          "requestedNumber" : {
+                            "type" : "number"
+                          },
+                          "extensions" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                          },
+                          "type" : {
+                            "type" : "string"
+                          },
+                          "modifyTime" : {
+                            "type" : "integer",
+                            "format" : "utc-millisec"
+                          }
+                        }
+                      }
+                    },
+                    "url" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v3:EventURL",
+                        "properties" : {
+                          "value" : {
+                            "type" : "string"
+                          },
+                          "type" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "extensions" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                    },
+                    "modifyTime" : {
+                      "type" : "integer",
+                      "format" : "utc-millisec"
+                    }
+                  }
+                }
+              },
+              "entryReceiver" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v3:EntryReceiver",
+                "properties" : {
+                  "address" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/address/items"
+                    }
+                  },
+                  "contact" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/contact/items"
+                    }
+                  }
+                }
+              },
+              "service" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/eventList/properties/event/items/properties/race/items/properties/service/items"
+                }
+              },
+              "account" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items/properties/account/items"
+                }
+              },
+              "url" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/eventList/properties/event/items/properties/race/items/properties/url/items"
+                }
+              },
+              "information" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:InformationItem",
+                  "properties" : {
+                    "title" : {
+                      "type" : "string"
+                    },
+                    "content" : {
+                      "type" : "string"
+                    },
+                    "modifyTime" : {
+                      "type" : "integer",
+                      "format" : "utc-millisec"
+                    }
+                  }
+                }
+              },
+              "schedule" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:Schedule",
+                  "properties" : {
+                    "startTime" : {
+                      "type" : "integer",
+                      "format" : "utc-millisec"
+                    },
+                    "endTime" : {
+                      "type" : "integer",
+                      "format" : "utc-millisec"
+                    },
+                    "name" : {
+                      "type" : "string"
+                    },
+                    "venue" : {
+                      "type" : "string"
+                    },
+                    "position" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items/properties/position"
+                    },
+                    "details" : {
+                      "type" : "string"
+                    },
+                    "modifyTime" : {
+                      "type" : "integer",
+                      "format" : "utc-millisec"
+                    }
+                  }
+                }
+              },
+              "news" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/eventList/properties/event/items/properties/information/items"
+                }
+              },
+              "extensions" : {
+                "type" : "object",
+                "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+              },
+              "modifyTime" : {
+                "type" : "integer",
+                "format" : "utc-millisec"
+              }
+            }
+          }
+        },
+        "extensions" : {
+          "type" : "object",
+          "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+        }
+      }
+    },
+    "classList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v3:ClassList",
+      "properties" : {
+        "iofVersion" : {
+          "type" : "string"
+        },
+        "createTime" : {
+          "type" : "integer",
+          "format" : "utc-millisec"
+        },
+        "creator" : {
+          "type" : "string"
+        },
+        "clazz" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items"
+          }
+        },
+        "extensions" : {
+          "type" : "object",
+          "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+        }
+      }
+    },
+    "entryList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v3:EntryList",
+      "properties" : {
+        "iofVersion" : {
+          "type" : "string"
+        },
+        "createTime" : {
+          "type" : "integer",
+          "format" : "utc-millisec"
+        },
+        "creator" : {
+          "type" : "string"
+        },
+        "event" : {
+          "type" : "object",
+          "$ref" : "#/properties/eventList/properties/event/items"
+        },
+        "teamEntry" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v3:TeamEntry",
+            "properties" : {
+              "id" : {
+                "type" : "object",
+                "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+              },
+              "name" : {
+                "type" : "string"
+              },
+              "organisation" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items"
+                }
+              },
+              "teamEntryPerson" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:TeamEntryPerson",
+                  "properties" : {
+                    "person" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person"
+                    },
+                    "organisation" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items"
+                    },
+                    "leg" : {
+                      "type" : "integer"
+                    },
+                    "legOrder" : {
+                      "type" : "integer"
+                    },
+                    "controlCard" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "#/properties/competitorList/properties/competitor/items/properties/controlCard/items"
+                      }
+                    },
+                    "score" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "#/properties/competitorList/properties/competitor/items/properties/score/items"
+                      }
+                    },
+                    "assignedFee" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v3:AssignedFee",
+                        "properties" : {
+                          "fee" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/teamFee/items"
+                          },
+                          "paidAmount" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/teamFee/items/properties/amount"
+                          },
+                          "extensions" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                          },
+                          "modifyTime" : {
+                            "type" : "integer",
+                            "format" : "utc-millisec"
+                          }
+                        }
+                      }
+                    },
+                    "extensions" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                    }
+                  }
+                }
+              },
+              "clazz" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items"
+                }
+              },
+              "race" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "integer"
+                }
+              },
+              "assignedFee" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/teamEntryPerson/items/properties/assignedFee/items"
+                }
+              },
+              "serviceRequest" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:ServiceRequest",
+                  "properties" : {
+                    "id" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                    },
+                    "service" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/eventList/properties/event/items/properties/race/items/properties/service/items"
+                    },
+                    "requestedQuantity" : {
+                      "type" : "number"
+                    },
+                    "deliveredQuantity" : {
+                      "type" : "number"
+                    },
+                    "comment" : {
+                      "type" : "string"
+                    },
+                    "assignedFee" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/teamEntryPerson/items/properties/assignedFee/items"
+                      }
+                    },
+                    "extensions" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                    },
+                    "modifyTime" : {
+                      "type" : "integer",
+                      "format" : "utc-millisec"
+                    }
+                  }
+                }
+              },
+              "startTimeAllocationRequest" : {
+                "type" : "object",
+                "id" : "urn:jsonschema:iof:v3:StartTimeAllocationRequest",
+                "properties" : {
+                  "organisation" : {
+                    "type" : "object",
+                    "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items"
+                  },
+                  "person" : {
+                    "type" : "object",
+                    "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person"
+                  },
+                  "type" : {
+                    "type" : "string"
+                  }
+                }
+              },
+              "contactInformation" : {
+                "type" : "string"
+              },
+              "entryTime" : {
+                "type" : "integer",
+                "format" : "utc-millisec"
+              },
+              "extensions" : {
+                "type" : "object",
+                "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+              },
+              "modifyTime" : {
+                "type" : "integer",
+                "format" : "utc-millisec"
+              }
+            }
+          }
+        },
+        "personEntry" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v3:PersonEntry",
+            "properties" : {
+              "id" : {
+                "type" : "object",
+                "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+              },
+              "person" : {
+                "type" : "object",
+                "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person"
+              },
+              "organisation" : {
+                "type" : "object",
+                "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items"
+              },
+              "controlCard" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/controlCard/items"
+                }
+              },
+              "score" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/score/items"
+                }
+              },
+              "clazz" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items"
+                }
+              },
+              "raceNumber" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "integer"
+                }
+              },
+              "assignedFee" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/teamEntryPerson/items/properties/assignedFee/items"
+                }
+              },
+              "serviceRequest" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/serviceRequest/items"
+                }
+              },
+              "startTimeAllocationRequest" : {
+                "type" : "object",
+                "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/startTimeAllocationRequest"
+              },
+              "entryTime" : {
+                "type" : "integer",
+                "format" : "utc-millisec"
+              },
+              "extensions" : {
+                "type" : "object",
+                "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+              },
+              "modifyTime" : {
+                "type" : "integer",
+                "format" : "utc-millisec"
+              }
+            }
+          }
+        },
+        "extensions" : {
+          "type" : "object",
+          "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+        }
+      }
+    },
+    "courseData" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v3:CourseData",
+      "properties" : {
+        "iofVersion" : {
+          "type" : "string"
+        },
+        "createTime" : {
+          "type" : "integer",
+          "format" : "utc-millisec"
+        },
+        "creator" : {
+          "type" : "string"
+        },
+        "event" : {
+          "type" : "object",
+          "$ref" : "#/properties/eventList/properties/event/items"
+        },
+        "raceCourseData" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v3:RaceCourseData",
+            "properties" : {
+              "map" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:Map",
+                  "properties" : {
+                    "id" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                    },
+                    "image" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items/properties/logotype/items"
+                    },
+                    "scale" : {
+                      "type" : "number"
+                    },
+                    "mapPositionTopLeft" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/raceClass/items/properties/onlineControl/items/properties/mapPosition"
+                    },
+                    "mapPositionBottomRight" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/raceClass/items/properties/onlineControl/items/properties/mapPosition"
+                    },
+                    "extensions" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                    }
+                  }
+                }
+              },
+              "control" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/raceClass/items/properties/onlineControl/items"
+                }
+              },
+              "course" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:Course",
+                  "properties" : {
+                    "id" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                    },
+                    "name" : {
+                      "type" : "string"
+                    },
+                    "courseFamily" : {
+                      "type" : "string"
+                    },
+                    "length" : {
+                      "type" : "number"
+                    },
+                    "climb" : {
+                      "type" : "number"
+                    },
+                    "courseControl" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v3:CourseControl",
+                        "properties" : {
+                          "control" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "string"
+                            }
+                          },
+                          "mapText" : {
+                            "type" : "string"
+                          },
+                          "mapTextPosition" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/raceClass/items/properties/onlineControl/items/properties/mapPosition"
+                          },
+                          "legLength" : {
+                            "type" : "number"
+                          },
+                          "score" : {
+                            "type" : "number"
+                          },
+                          "extensions" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                          },
+                          "type" : {
+                            "type" : "string",
+                            "enum" : [ "CONTROL", "START", "FINISH", "CROSSING_POINT", "END_OF_MARKED_ROUTE" ]
+                          },
+                          "randomOrder" : {
+                            "type" : "boolean"
+                          },
+                          "specialInstruction" : {
+                            "type" : "string"
+                          },
+                          "tapedRouteLength" : {
+                            "type" : "number"
+                          },
+                          "modifyTime" : {
+                            "type" : "integer",
+                            "format" : "utc-millisec"
+                          }
+                        }
+                      }
+                    },
+                    "mapId" : {
+                      "type" : "integer"
+                    },
+                    "extensions" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                    },
+                    "numberOfCompetitors" : {
+                      "type" : "integer"
+                    },
+                    "modifyTime" : {
+                      "type" : "integer",
+                      "format" : "utc-millisec"
+                    }
+                  }
+                }
+              },
+              "classCourseAssignment" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:ClassCourseAssignment",
+                  "properties" : {
+                    "classId" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                    },
+                    "className" : {
+                      "type" : "string"
+                    },
+                    "allowedOnLeg" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "integer"
+                      }
+                    },
+                    "courseName" : {
+                      "type" : "string"
+                    },
+                    "courseFamily" : {
+                      "type" : "string"
+                    },
+                    "extensions" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                    },
+                    "numberOfCompetitors" : {
+                      "type" : "integer"
+                    }
+                  }
+                }
+              },
+              "personCourseAssignment" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:PersonCourseAssignment",
+                  "properties" : {
+                    "entryId" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                    },
+                    "bibNumber" : {
+                      "type" : "string"
+                    },
+                    "personName" : {
+                      "type" : "string"
+                    },
+                    "className" : {
+                      "type" : "string"
+                    },
+                    "courseName" : {
+                      "type" : "string"
+                    },
+                    "courseFamily" : {
+                      "type" : "string"
+                    },
+                    "extensions" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                    }
+                  }
+                }
+              },
+              "teamCourseAssignment" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:TeamCourseAssignment",
+                  "properties" : {
+                    "bibNumber" : {
+                      "type" : "string"
+                    },
+                    "teamName" : {
+                      "type" : "string"
+                    },
+                    "className" : {
+                      "type" : "string"
+                    },
+                    "teamMemberCourseAssignment" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v3:TeamMemberCourseAssignment",
+                        "properties" : {
+                          "entryId" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                          },
+                          "bibNumber" : {
+                            "type" : "string"
+                          },
+                          "leg" : {
+                            "type" : "integer"
+                          },
+                          "legOrder" : {
+                            "type" : "integer"
+                          },
+                          "teamMemberName" : {
+                            "type" : "string"
+                          },
+                          "courseName" : {
+                            "type" : "string"
+                          },
+                          "courseFamily" : {
+                            "type" : "string"
+                          },
+                          "extensions" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                          }
+                        }
+                      }
+                    },
+                    "extensions" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                    }
+                  }
+                }
+              },
+              "extensions" : {
+                "type" : "object",
+                "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+              },
+              "raceNumber" : {
+                "type" : "integer"
+              }
+            }
+          }
+        },
+        "extensions" : {
+          "type" : "object",
+          "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+        }
+      }
+    },
+    "startList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v3:StartList",
+      "properties" : {
+        "iofVersion" : {
+          "type" : "string"
+        },
+        "createTime" : {
+          "type" : "integer",
+          "format" : "utc-millisec"
+        },
+        "creator" : {
+          "type" : "string"
+        },
+        "event" : {
+          "type" : "object",
+          "$ref" : "#/properties/eventList/properties/event/items"
+        },
+        "classStart" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v3:ClassStart",
+            "properties" : {
+              "clazz" : {
+                "type" : "object",
+                "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items"
+              },
+              "course" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:SimpleRaceCourse",
+                  "properties" : {
+                    "id" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                    },
+                    "name" : {
+                      "type" : "string"
+                    },
+                    "courseFamily" : {
+                      "type" : "string"
+                    },
+                    "length" : {
+                      "type" : "number"
+                    },
+                    "climb" : {
+                      "type" : "number"
+                    },
+                    "numberOfControls" : {
+                      "type" : "integer"
+                    },
+                    "raceNumber" : {
+                      "type" : "integer"
+                    }
+                  }
+                }
+              },
+              "startName" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:StartName",
+                  "properties" : {
+                    "value" : {
+                      "type" : "string"
+                    },
+                    "raceNumber" : {
+                      "type" : "integer"
+                    }
+                  }
+                }
+              },
+              "personStart" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:PersonStart",
+                  "properties" : {
+                    "entryId" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                    },
+                    "person" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person"
+                    },
+                    "organisation" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items"
+                    },
+                    "start" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v3:PersonRaceStart",
+                        "properties" : {
+                          "bibNumber" : {
+                            "type" : "string"
+                          },
+                          "startTime" : {
+                            "type" : "integer",
+                            "format" : "utc-millisec"
+                          },
+                          "course" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/raceClass/items/properties/course/items"
+                          },
+                          "controlCard" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "$ref" : "#/properties/competitorList/properties/competitor/items/properties/controlCard/items"
+                            }
+                          },
+                          "assignedFee" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/teamEntryPerson/items/properties/assignedFee/items"
+                            }
+                          },
+                          "serviceRequest" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/serviceRequest/items"
+                            }
+                          },
+                          "extensions" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                          },
+                          "raceNumber" : {
+                            "type" : "integer"
+                          }
+                        }
+                      }
+                    },
+                    "extensions" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                    },
+                    "modifyTime" : {
+                      "type" : "integer",
+                      "format" : "utc-millisec"
+                    }
+                  }
+                }
+              },
+              "teamStart" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:TeamStart",
+                  "properties" : {
+                    "entryId" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                    },
+                    "name" : {
+                      "type" : "string"
+                    },
+                    "organisation" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items"
+                      }
+                    },
+                    "bibNumber" : {
+                      "type" : "string"
+                    },
+                    "teamMemberStart" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v3:TeamMemberStart",
+                        "properties" : {
+                          "entryId" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                          },
+                          "person" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person"
+                          },
+                          "organisation" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items"
+                          },
+                          "start" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "id" : "urn:jsonschema:iof:v3:TeamMemberRaceStart",
+                              "properties" : {
+                                "leg" : {
+                                  "type" : "integer"
+                                },
+                                "legOrder" : {
+                                  "type" : "integer"
+                                },
+                                "bibNumber" : {
+                                  "type" : "string"
+                                },
+                                "startTime" : {
+                                  "type" : "integer",
+                                  "format" : "utc-millisec"
+                                },
+                                "course" : {
+                                  "type" : "object",
+                                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/raceClass/items/properties/course/items"
+                                },
+                                "controlCard" : {
+                                  "type" : "array",
+                                  "items" : {
+                                    "type" : "object",
+                                    "$ref" : "#/properties/competitorList/properties/competitor/items/properties/controlCard/items"
+                                  }
+                                },
+                                "assignedFee" : {
+                                  "type" : "array",
+                                  "items" : {
+                                    "type" : "object",
+                                    "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/teamEntryPerson/items/properties/assignedFee/items"
+                                  }
+                                },
+                                "serviceRequest" : {
+                                  "type" : "array",
+                                  "items" : {
+                                    "type" : "object",
+                                    "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/serviceRequest/items"
+                                  }
+                                },
+                                "extensions" : {
+                                  "type" : "object",
+                                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                                },
+                                "raceNumber" : {
+                                  "type" : "integer"
+                                }
+                              }
+                            }
+                          },
+                          "extensions" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                          },
+                          "modifyTime" : {
+                            "type" : "integer",
+                            "format" : "utc-millisec"
+                          }
+                        }
+                      }
+                    },
+                    "assignedFee" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/teamEntryPerson/items/properties/assignedFee/items"
+                      }
+                    },
+                    "serviceRequest" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/serviceRequest/items"
+                      }
+                    },
+                    "extensions" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                    },
+                    "modifyTime" : {
+                      "type" : "integer",
+                      "format" : "utc-millisec"
+                    }
+                  }
+                }
+              },
+              "extensions" : {
+                "type" : "object",
+                "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+              },
+              "timeResolution" : {
+                "type" : "number"
+              },
+              "modifyTime" : {
+                "type" : "integer",
+                "format" : "utc-millisec"
+              }
+            }
+          }
+        },
+        "extensions" : {
+          "type" : "object",
+          "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+        }
+      }
+    },
+    "resultList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v3:ResultList",
+      "properties" : {
+        "iofVersion" : {
+          "type" : "string"
+        },
+        "createTime" : {
+          "type" : "integer",
+          "format" : "utc-millisec"
+        },
+        "creator" : {
+          "type" : "string"
+        },
+        "event" : {
+          "type" : "object",
+          "$ref" : "#/properties/eventList/properties/event/items"
+        },
+        "classResult" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v3:ClassResult",
+            "properties" : {
+              "clazz" : {
+                "type" : "object",
+                "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items"
+              },
+              "course" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/startList/properties/classStart/items/properties/course/items"
+                }
+              },
+              "personResult" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:PersonResult",
+                  "properties" : {
+                    "entryId" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                    },
+                    "person" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person"
+                    },
+                    "organisation" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items"
+                    },
+                    "result" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v3:PersonRaceResult",
+                        "properties" : {
+                          "bibNumber" : {
+                            "type" : "string"
+                          },
+                          "startTime" : {
+                            "type" : "integer",
+                            "format" : "utc-millisec"
+                          },
+                          "finishTime" : {
+                            "type" : "integer",
+                            "format" : "utc-millisec"
+                          },
+                          "time" : {
+                            "type" : "number"
+                          },
+                          "timeBehind" : {
+                            "type" : "number"
+                          },
+                          "position" : {
+                            "type" : "integer"
+                          },
+                          "status" : {
+                            "type" : "string",
+                            "enum" : [ "OK", "FINISHED", "MISSING_PUNCH", "DISQUALIFIED", "DID_NOT_FINISH", "ACTIVE", "INACTIVE", "OVER_TIME", "SPORTING_WITHDRAWAL", "NOT_COMPETING", "MOVED", "MOVED_UP", "DID_NOT_START", "DID_NOT_ENTER", "CANCELLED" ]
+                          },
+                          "score" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "$ref" : "#/properties/competitorList/properties/competitor/items/properties/score/items"
+                            }
+                          },
+                          "overallResult" : {
+                            "type" : "object",
+                            "id" : "urn:jsonschema:iof:v3:OverallResult",
+                            "properties" : {
+                              "time" : {
+                                "type" : "number"
+                              },
+                              "timeBehind" : {
+                                "type" : "number"
+                              },
+                              "position" : {
+                                "type" : "integer"
+                              },
+                              "status" : {
+                                "type" : "string",
+                                "enum" : [ "OK", "FINISHED", "MISSING_PUNCH", "DISQUALIFIED", "DID_NOT_FINISH", "ACTIVE", "INACTIVE", "OVER_TIME", "SPORTING_WITHDRAWAL", "NOT_COMPETING", "MOVED", "MOVED_UP", "DID_NOT_START", "DID_NOT_ENTER", "CANCELLED" ]
+                              },
+                              "score" : {
+                                "type" : "array",
+                                "items" : {
+                                  "type" : "object",
+                                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/score/items"
+                                }
+                              },
+                              "extensions" : {
+                                "type" : "object",
+                                "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                              }
+                            }
+                          },
+                          "course" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/raceClass/items/properties/course/items"
+                          },
+                          "splitTime" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "id" : "urn:jsonschema:iof:v3:SplitTime",
+                              "properties" : {
+                                "controlCode" : {
+                                  "type" : "string"
+                                },
+                                "time" : {
+                                  "type" : "number"
+                                },
+                                "extensions" : {
+                                  "type" : "object",
+                                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                                },
+                                "status" : {
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          },
+                          "controlAnswer" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "id" : "urn:jsonschema:iof:v3:ControlAnswer",
+                              "properties" : {
+                                "answer" : {
+                                  "type" : "string"
+                                },
+                                "correctAnswer" : {
+                                  "type" : "string"
+                                },
+                                "time" : {
+                                  "type" : "number"
+                                },
+                                "extensions" : {
+                                  "type" : "object",
+                                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                                }
+                              }
+                            }
+                          },
+                          "route" : {
+                            "type" : "object",
+                            "id" : "urn:jsonschema:iof:v3:Route",
+                            "properties" : {
+                              "value" : {
+                                "type" : "array",
+                                "items" : {
+                                  "type" : "integer"
+                                }
+                              }
+                            }
+                          },
+                          "controlCard" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "$ref" : "#/properties/competitorList/properties/competitor/items/properties/controlCard/items"
+                            }
+                          },
+                          "assignedFee" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/teamEntryPerson/items/properties/assignedFee/items"
+                            }
+                          },
+                          "serviceRequest" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/serviceRequest/items"
+                            }
+                          },
+                          "extensions" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                          },
+                          "raceNumber" : {
+                            "type" : "integer"
+                          }
+                        }
+                      }
+                    },
+                    "extensions" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                    },
+                    "modifyTime" : {
+                      "type" : "integer",
+                      "format" : "utc-millisec"
+                    }
+                  }
+                }
+              },
+              "teamResult" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:TeamResult",
+                  "properties" : {
+                    "entryId" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                    },
+                    "name" : {
+                      "type" : "string"
+                    },
+                    "organisation" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items"
+                      }
+                    },
+                    "bibNumber" : {
+                      "type" : "string"
+                    },
+                    "teamMemberResult" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "id" : "urn:jsonschema:iof:v3:TeamMemberResult",
+                        "properties" : {
+                          "entryId" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/id/items"
+                          },
+                          "person" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person"
+                          },
+                          "organisation" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items"
+                          },
+                          "result" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "id" : "urn:jsonschema:iof:v3:TeamMemberRaceResult",
+                              "properties" : {
+                                "leg" : {
+                                  "type" : "integer"
+                                },
+                                "legOrder" : {
+                                  "type" : "integer"
+                                },
+                                "bibNumber" : {
+                                  "type" : "string"
+                                },
+                                "startTime" : {
+                                  "type" : "integer",
+                                  "format" : "utc-millisec"
+                                },
+                                "finishTime" : {
+                                  "type" : "integer",
+                                  "format" : "utc-millisec"
+                                },
+                                "time" : {
+                                  "type" : "number"
+                                },
+                                "timeBehind" : {
+                                  "type" : "array",
+                                  "items" : {
+                                    "type" : "object",
+                                    "id" : "urn:jsonschema:iof:v3:TeamMemberRaceResult:TimeBehind",
+                                    "properties" : {
+                                      "value" : {
+                                        "type" : "number"
+                                      },
+                                      "type" : {
+                                        "type" : "string"
+                                      }
+                                    }
+                                  }
+                                },
+                                "position" : {
+                                  "type" : "array",
+                                  "items" : {
+                                    "type" : "object",
+                                    "id" : "urn:jsonschema:iof:v3:TeamMemberRaceResult:Position",
+                                    "properties" : {
+                                      "value" : {
+                                        "type" : "integer"
+                                      },
+                                      "type" : {
+                                        "type" : "string"
+                                      }
+                                    }
+                                  }
+                                },
+                                "status" : {
+                                  "type" : "string",
+                                  "enum" : [ "OK", "FINISHED", "MISSING_PUNCH", "DISQUALIFIED", "DID_NOT_FINISH", "ACTIVE", "INACTIVE", "OVER_TIME", "SPORTING_WITHDRAWAL", "NOT_COMPETING", "MOVED", "MOVED_UP", "DID_NOT_START", "DID_NOT_ENTER", "CANCELLED" ]
+                                },
+                                "score" : {
+                                  "type" : "array",
+                                  "items" : {
+                                    "type" : "object",
+                                    "$ref" : "#/properties/competitorList/properties/competitor/items/properties/score/items"
+                                  }
+                                },
+                                "overallResult" : {
+                                  "type" : "object",
+                                  "$ref" : "#/properties/resultList/properties/classResult/items/properties/personResult/items/properties/result/items/properties/overallResult"
+                                },
+                                "course" : {
+                                  "type" : "object",
+                                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/clazz/items/properties/raceClass/items/properties/course/items"
+                                },
+                                "splitTime" : {
+                                  "type" : "array",
+                                  "items" : {
+                                    "type" : "object",
+                                    "$ref" : "#/properties/resultList/properties/classResult/items/properties/personResult/items/properties/result/items/properties/splitTime/items"
+                                  }
+                                },
+                                "controlAnswer" : {
+                                  "type" : "array",
+                                  "items" : {
+                                    "type" : "object",
+                                    "$ref" : "#/properties/resultList/properties/classResult/items/properties/personResult/items/properties/result/items/properties/controlAnswer/items"
+                                  }
+                                },
+                                "route" : {
+                                  "type" : "object",
+                                  "$ref" : "#/properties/resultList/properties/classResult/items/properties/personResult/items/properties/result/items/properties/route"
+                                },
+                                "controlCard" : {
+                                  "type" : "array",
+                                  "items" : {
+                                    "type" : "object",
+                                    "$ref" : "#/properties/competitorList/properties/competitor/items/properties/controlCard/items"
+                                  }
+                                },
+                                "assignedFee" : {
+                                  "type" : "array",
+                                  "items" : {
+                                    "type" : "object",
+                                    "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/teamEntryPerson/items/properties/assignedFee/items"
+                                  }
+                                },
+                                "serviceRequest" : {
+                                  "type" : "array",
+                                  "items" : {
+                                    "type" : "object",
+                                    "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/serviceRequest/items"
+                                  }
+                                },
+                                "extensions" : {
+                                  "type" : "object",
+                                  "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                                },
+                                "raceNumber" : {
+                                  "type" : "integer"
+                                }
+                              }
+                            }
+                          },
+                          "extensions" : {
+                            "type" : "object",
+                            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                          },
+                          "modifyTime" : {
+                            "type" : "integer",
+                            "format" : "utc-millisec"
+                          }
+                        }
+                      }
+                    },
+                    "assignedFee" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/teamEntryPerson/items/properties/assignedFee/items"
+                      }
+                    },
+                    "serviceRequest" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/serviceRequest/items"
+                      }
+                    },
+                    "extensions" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+                    }
+                  }
+                }
+              },
+              "extensions" : {
+                "type" : "object",
+                "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+              },
+              "timeResolution" : {
+                "type" : "number"
+              },
+              "modifyTime" : {
+                "type" : "integer",
+                "format" : "utc-millisec"
+              }
+            }
+          }
+        },
+        "extensions" : {
+          "type" : "object",
+          "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+        },
+        "status" : {
+          "type" : "string"
+        }
+      }
+    },
+    "serviceRequestList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v3:ServiceRequestList",
+      "properties" : {
+        "iofVersion" : {
+          "type" : "string"
+        },
+        "createTime" : {
+          "type" : "integer",
+          "format" : "utc-millisec"
+        },
+        "creator" : {
+          "type" : "string"
+        },
+        "event" : {
+          "type" : "object",
+          "$ref" : "#/properties/eventList/properties/event/items"
+        },
+        "organisationServiceRequest" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:iof:v3:OrganisationServiceRequest",
+            "properties" : {
+              "organisation" : {
+                "type" : "object",
+                "$ref" : "#/properties/competitorList/properties/competitor/items/properties/organisation/items"
+              },
+              "serviceRequest" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/serviceRequest/items"
+                }
+              },
+              "personServiceRequest" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "id" : "urn:jsonschema:iof:v3:PersonServiceRequest",
+                  "properties" : {
+                    "person" : {
+                      "type" : "object",
+                      "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person"
+                    },
+                    "serviceRequest" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "$ref" : "#/properties/entryList/properties/teamEntry/items/properties/serviceRequest/items"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "personServiceRequest" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "$ref" : "#/properties/serviceRequestList/properties/organisationServiceRequest/items/properties/personServiceRequest/items"
+          }
+        },
+        "extensions" : {
+          "type" : "object",
+          "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+        }
+      }
+    },
+    "controlCardList" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:iof:v3:ControlCardList",
+      "properties" : {
+        "iofVersion" : {
+          "type" : "string"
+        },
+        "createTime" : {
+          "type" : "integer",
+          "format" : "utc-millisec"
+        },
+        "creator" : {
+          "type" : "string"
+        },
+        "owner" : {
+          "type" : "string"
+        },
+        "controlCard" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "$ref" : "#/properties/competitorList/properties/competitor/items/properties/controlCard/items"
+          }
+        },
+        "extensions" : {
+          "type" : "object",
+          "$ref" : "#/properties/competitorList/properties/competitor/items/properties/person/properties/extensions"
+        }
+      }
+    }
+  }
+}
